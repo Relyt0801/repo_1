@@ -16,7 +16,7 @@ backend:
   repo: Relyt0801/repo_1
   branch: main
   auth_type: pkce
-  app_id: Ov23liY87wfdaPFi49pJ   # <-- hier eintragen!
+  app_id: DEINE_GITHUB_CLIENT_ID   # <-- hier eintragen!
 
 locale: de
 
