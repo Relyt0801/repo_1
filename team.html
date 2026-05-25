@@ -102,9 +102,9 @@
     <button class="filter-btn px-md py-sm rounded-lg bg-surface-container-high text-on-surface-variant font-body-bold text-body-bold hover:bg-surface-container-highest transition-all cursor-pointer" id="filter-candidates" onclick="filterTeam('candidates')">Kandidaten</button>
   </div>
 
-  <!-- Team Grid -->
+  <!-- Team Grid (dynamisch aus data/team.json) -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md" id="team-grid">
-    <!-- Card 1: Fraktionsvorsitzender -->
+    <!-- Wird per JavaScript aus data/team.json befüllt (Fallback statisch) -->
     <div class="team-card bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300" data-category="council board">
       <div class="aspect-[4/5] overflow-hidden relative bg-surface-container">
         <img alt="Hans-Werner Schmidt, Fraktionsvorsitzender der UWG Raesfeld-Erle" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA1hcVsYOayIFdyY1JDgQm2AUyqVG-ZxmUxnIPXrZlzWoRx4EeBYfatP6Jetjgm1CZgcDCSkS3JkF5D47RhJlPuT8tE5ZiZLPNdbCHJwJAQ5W3EIVNX97g2aa9tzpsIAhiwc-NetJhNA4uzhmS38xagIcTL-hkGY60_ze6borK6VfG0BHm0a0XuiAOE3kNjiF0XjDlth9OU40nZdDVpxQYzF87QLmRpFdo0grmjT8MPLlOa4a5z3dVvM1vNY6y8WUcYCXjAgF9ivM"/>
@@ -292,5 +292,43 @@
 </nav>
 
 <script src="script.js"></script>
+<script>
+(async function() {
+  const grid = document.getElementById('team-grid');
+  if (!grid) return;
+  var badge = {
+    council:    'bg-primary text-on-primary',
+    board:      'bg-tertiary text-on-tertiary',
+    candidates: 'bg-secondary text-on-secondary'
+  };
+  var label = {council: 'Gemeinderat', board: 'Vorstand', candidates: 'Kandidat/in'};
+  try {
+    var res = await fetch('data/team.json');
+    if (!res.ok) return;
+    var data = await res.json();
+    var members = data.members;
+    if (!members || !members.length) return;
+    grid.innerHTML = members.map(function(m) {
+      var cats = Array.isArray(m.categories) ? m.categories : [m.category || 'council'];
+      var cat = cats[0];
+      var badgeCls = badge[cat] || 'bg-surface-container text-on-surface';
+      var lbl = label[cat] || cat;
+      var img = m.image
+        ? '<img alt="' + m.name + '" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="' + m.image + '"/>'
+        : '<div class="w-full h-full flex items-center justify-center"><span class="material-symbols-outlined text-[80px] text-on-surface-variant opacity-20">person</span></div>';
+      var body = m.quote
+        ? '<p class="font-body-base text-body-base text-on-surface-variant italic border-l-4 border-secondary pl-md">&ldquo;' + m.quote + '&rdquo;</p>'
+        : (m.bio ? '<p class="font-body-base text-body-base text-on-surface-variant">' + m.bio + '</p>' : '');
+      return '<div class="team-card bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300" data-category="' + cats.join(' ') + '">' +
+        '<div class="aspect-[4/5] overflow-hidden relative bg-surface-container">' + img +
+        '<div class="absolute top-md left-md"><span class="' + badgeCls + ' font-label-caps text-label-caps px-sm py-xs uppercase">' + lbl + '</span></div></div>' +
+        '<div class="p-lg"><h3 class="font-headline-md text-headline-md text-on-surface mb-xs">' + m.name + '</h3>' +
+        '<p class="font-body-bold text-body-bold text-primary mb-md">' + m.role + '</p>' +
+        '<hr class="border-outline-variant mb-md"/>' + body + '</div></div>';
+    }).join('');
+    if (typeof filterTeam === 'function') filterTeam('all');
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

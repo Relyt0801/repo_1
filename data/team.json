@@ -1,0 +1,46 @@
+{
+  "members": [
+    {
+      "name": "Hans-Werner Schmidt",
+      "role": "Diplom-Verwaltungswirt",
+      "categories": ["council", "board"],
+      "quote": "Ehrliche Politik beginnt beim Zuhören. Wir gestalten Raesfeld gemeinsam.",
+      "image": ""
+    },
+    {
+      "name": "Sandra Müller",
+      "role": "Unternehmerin",
+      "categories": ["candidates"],
+      "quote": "Nachhaltigkeit und Wirtschaftswachstum müssen in Erle Hand in Hand gehen.",
+      "image": ""
+    },
+    {
+      "name": "Karl-Heinz Weber",
+      "role": "Kassierer",
+      "categories": ["board"],
+      "quote": "Transparente Finanzen sind das Fundament einer starken Gemeinde.",
+      "image": ""
+    },
+    {
+      "name": "Markus Vogt",
+      "role": "Ingenieur",
+      "categories": ["council"],
+      "quote": "Moderne Infrastruktur für eine zukunftssichere Heimat.",
+      "image": ""
+    },
+    {
+      "name": "Elena Fischer",
+      "role": "Schriftführerin",
+      "categories": ["board"],
+      "quote": "Präzise Dokumentation für nachvollziehbare Entscheidungen.",
+      "image": ""
+    },
+    {
+      "name": "Tobias Kämper",
+      "role": "Landwirt",
+      "categories": ["candidates"],
+      "quote": "Unsere Natur ist unser Kapital. Wir müssen sie bewahren.",
+      "image": ""
+    }
+  ]
+}

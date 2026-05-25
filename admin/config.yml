@@ -1,0 +1,91 @@
+# ============================================================
+# Decap CMS Konfiguration — UWG Raesfeld-Erle
+# ============================================================
+# EINMALIGE EINRICHTUNG nötig:
+# 1. Gehe zu: https://github.com/settings/developers → "OAuth Apps" → "New OAuth App"
+# 2. Felder ausfüllen:
+#    - Application name:         UWG Website CMS
+#    - Homepage URL:             https://uwg-raesfeld-erle.de
+#    - Authorization callback:   https://uwg-raesfeld-erle.de/admin/
+# 3. Klicke "Register application"
+# 4. Kopiere die "Client ID" und ersetze DEINE_GITHUB_CLIENT_ID unten.
+# ============================================================
+
+backend:
+  name: github
+  repo: Relyt0801/repo_1
+  branch: main
+  auth_type: pkce
+  app_id: DEINE_GITHUB_CLIENT_ID   # <-- hier eintragen!
+
+locale: de
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "neuigkeiten"
+    label: "Neuigkeiten"
+    files:
+      - name: "artikel"
+        label: "Alle Artikel"
+        file: "data/news.json"
+        format: json
+        fields:
+          - label: "Artikel"
+            name: "articles"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.date}})"
+            fields:
+              - {label: "Titel", name: "title", widget: "string"}
+              - {label: "Datum", name: "date", widget: "string", hint: "Format: TT.MM.JJJJ"}
+              - label: "Kategorie"
+                name: "category"
+                widget: "select"
+                options:
+                  - {label: "Kommunalpolitik", value: "Kommunalpolitik"}
+                  - {label: "Veranstaltung", value: "Veranstaltung"}
+                  - {label: "Pressemitteilung", value: "Pressemitteilung"}
+                  - {label: "Ankündigung", value: "Ankündigung"}
+              - {label: "Zusammenfassung", name: "summary", widget: "text"}
+              - {label: "Bild (URL oder Upload)", name: "image", widget: "image", required: false, allow_multiple: false}
+
+  - name: "team"
+    label: "Team"
+    files:
+      - name: "mitglieder"
+        label: "Alle Mitglieder"
+        file: "data/team.json"
+        format: json
+        fields:
+          - label: "Mitglieder"
+            name: "members"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Funktion / Beruf", name: "role", widget: "string"}
+              - label: "Kategorien"
+                name: "categories"
+                widget: "select"
+                multiple: true
+                options:
+                  - {label: "Gemeinderat", value: "council"}
+                  - {label: "Vorstand", value: "board"}
+                  - {label: "Kandidat/in", value: "candidates"}
+              - {label: "Zitat", name: "quote", widget: "text", required: false}
+              - {label: "Foto", name: "image", widget: "image", required: false, allow_multiple: false}
+
+  - name: "einstellungen"
+    label: "Website-Einstellungen"
+    files:
+      - name: "allgemein"
+        label: "Allgemeine Angaben"
+        file: "data/settings.json"
+        format: json
+        fields:
+          - {label: "Slogan / Untertitel", name: "slogan", widget: "string"}
+          - {label: "E-Mail-Adresse", name: "email", widget: "string"}
+          - {label: "Telefonnummer", name: "phone", widget: "string"}
+          - {label: "Adresse", name: "address", widget: "string"}
+          - {label: "Bürgersprechstunde (Zeiten)", name: "office_hours", widget: "string"}

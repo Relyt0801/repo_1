@@ -114,17 +114,14 @@
   <!-- Bento Grid: News & Key Points -->
   <section class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-lg">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-md">
-      <!-- Main News Card -->
-      <div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant p-lg flex flex-col gap-md soft-shadow">
+      <!-- Main News Card (dynamisch aus data/news.json) -->
+      <div id="news-main-card" class="md:col-span-8 bg-surface-container-lowest border border-outline-variant p-lg flex flex-col gap-md soft-shadow">
         <span class="font-label-caps text-label-caps text-secondary uppercase">Kommunalpolitik</span>
         <h2 class="font-headline-md text-headline-md text-on-surface">Neuer Antrag zur Radweginfrastruktur eingereicht</h2>
-        <img class="w-full h-64 object-cover border border-outline-variant" alt="Moderner Radweg durch eine grüne ländliche Landschaft in Deutschland" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUNwRSkUt3IwDeun8VCmq6zvzX_i4GiRYcFXyF9ZkJhV_Aij6aqHnkkYDI-Wgv5uuDY8A-GxO5cqhnV1LkbU-O1yIElAE81pgIEMJaJJqAyWLfSbml5b2M6J-fcr6up6yPy308gUGquEGFID2IyGRMsCO1O7hHhNqkNPRp8uTrIOEkyvLvMdJZjX2GyM1MLrKHsuz1j711tz2jUIpUdvewu1V2UpqLEOc3fcDWY9vtqkcJMNvqGw_Qr1HwExkJ2_UpAmyBGSuWXnI"/>
         <p class="text-on-surface-variant font-body-base text-body-base">
           Wir fordern den Ausbau des Radweges zwischen Raesfeld und Erle, um die Sicherheit für Schüler und Pendler maßgeblich zu erhöhen. Unser Ziel ist eine lückenlose Vernetzung...
         </p>
-        <a class="text-primary font-body-bold text-body-bold flex items-center gap-xs hover:underline cursor-pointer" href="#">
-          Mehr lesen <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-        </a>
+        <span class="font-label-caps text-label-caps text-on-surface-variant">15.05.2026</span>
       </div>
       <!-- Secondary Cards Stack -->
       <div class="md:col-span-4 flex flex-col gap-md">
@@ -306,5 +303,24 @@
 </button>
 
 <script src="script.js"></script>
+<script>
+(async function() {
+  const card = document.getElementById('news-main-card');
+  if (!card) return;
+  try {
+    const res = await fetch('data/news.json');
+    if (!res.ok) return;
+    const data = await res.json();
+    const art = data.articles && data.articles[0];
+    if (!art) return;
+    card.innerHTML =
+      '<span class="font-label-caps text-label-caps text-secondary uppercase">' + art.category + '</span>' +
+      '<h2 class="font-headline-md text-headline-md text-on-surface">' + art.title + '</h2>' +
+      (art.image ? '<img class="w-full h-64 object-cover border border-outline-variant" alt="' + art.title + '" src="' + art.image + '"/>' : '') +
+      '<p class="text-on-surface-variant font-body-base text-body-base">' + art.summary + '</p>' +
+      '<span class="font-label-caps text-label-caps text-on-surface-variant">' + art.date + '</span>';
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>
