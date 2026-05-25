@@ -1,141 +1,69 @@
-// Stitch Studio — interactivity
-
-(function () {
-  'use strict';
-
-  // ── Mobile menu toggle ──────────────────────────────────────────
-  const menuToggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  if (menuToggle && menu) {
-    menuToggle.addEventListener('click', () => {
-      const open = menu.classList.toggle('hidden') === false;
-      menuToggle.setAttribute('aria-expanded', String(open));
+(function() {
+  const btn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (btn && mobileMenu) {
+    btn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
     });
-    menu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        menu.classList.add('hidden');
-        menuToggle.setAttribute('aria-expanded', 'false');
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }));
+  }
+
+  window.filterTeam = function(category) {
+    document.querySelectorAll('.team-card').forEach(card => {
+      card.style.display = (category === 'all' || card.dataset.category.includes(category)) ? '' : 'none';
+    });
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      const active = b.id === 'filter-' + category;
+      b.classList.toggle('bg-primary', active);
+      b.classList.toggle('text-on-primary', active);
+      b.classList.toggle('bg-surface-container-high', !active);
+      b.classList.toggle('text-on-surface-variant', !active);
+    });
+  };
+
+  const sections = document.querySelectorAll('article[id]');
+  const sideLinks = document.querySelectorAll('aside a[href^="#"]');
+  if (sections.length && sideLinks.length) {
+    window.setActive = function(el) {
+      sideLinks.forEach(l => { l.classList.remove('active-tab'); l.classList.add('text-on-surface-variant'); });
+      el.classList.add('active-tab'); el.classList.remove('text-on-surface-variant');
+    };
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) current = s.id; });
+      sideLinks.forEach(l => {
+        const active = l.getAttribute('href') === '#' + current;
+        l.classList.toggle('active-tab', active);
+        l.classList.toggle('text-on-surface-variant', !active);
       });
     });
   }
 
-  // ── Theme toggle (light / dark) ─────────────────────────────────
-  const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
-    const applyAria = () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      themeToggle.setAttribute(
-        'aria-label',
-        isDark ? 'Auf helles Farbschema umschalten' : 'Auf dunkles Farbschema umschalten'
-      );
-    };
-    applyAria();
-    themeToggle.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      try {
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      } catch (e) {}
-      applyAria();
+  const contactForm = document.querySelector('form#contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const submitBtn = contactForm.querySelector('button[type=submit]');
+      const orig = submitBtn.textContent;
+      submitBtn.textContent = 'Wird gesendet...';
+      submitBtn.disabled = true;
+      setTimeout(() => {
+        submitBtn.textContent = 'Gesendet!';
+        contactForm.reset();
+        setTimeout(() => { submitBtn.textContent = orig; submitBtn.disabled = false; }, 3000);
+      }, 1200);
     });
   }
 
-  // ── Sign-up form (Formspree) ────────────────────────────────────
-  // Replace FORMSPREE_ID with your real form ID from https://formspree.io
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/FORMSPREE_ID';
-
-  const form = document.getElementById('signup-form');
-  const status = document.getElementById('form-status');
-  const submitBtn = document.getElementById('signup-submit');
-
-  if (form && status && submitBtn) {
-    const label = submitBtn.querySelector('.signup-label');
-    const arrow = submitBtn.querySelector('.signup-arrow');
-    const spinner = submitBtn.querySelector('.signup-spinner');
-    const emailInput = form.querySelector('#email');
-
-    const setStatus = (msg, tone) => {
-      status.textContent = msg;
-      status.className =
-        'mt-4 text-sm min-h-[1.25rem] ' +
-        (tone === 'error'
-          ? 'text-red-200'
-          : tone === 'success'
-          ? 'text-emerald-200'
-          : 'text-brand-100/90');
-    };
-
-    const setLoading = (loading) => {
-      submitBtn.disabled = loading;
-      if (label) label.textContent = loading ? 'Wird gesendet…' : 'Starten';
-      if (arrow) arrow.classList.toggle('hidden', loading);
-      if (spinner) spinner.classList.toggle('hidden', !loading);
-    };
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const email = (emailInput.value || '').trim();
-
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        setStatus('Bitte gib eine gültige E-Mail-Adresse ein.', 'error');
-        emailInput.focus();
-        return;
-      }
-
-      // Demo-Modus, solange kein echter Endpoint hinterlegt ist
-      if (FORMSPREE_ENDPOINT.includes('FORMSPREE_ID')) {
-        setLoading(true);
-        await new Promise((r) => setTimeout(r, 600));
-        setLoading(false);
-        setStatus(
-          'Danke! (Demo-Modus — füge in script.js deinen Formspree-Endpoint ein, um Zustellungen zu aktivieren.)',
-          'success'
-        );
-        form.reset();
-        return;
-      }
-
-      setLoading(true);
-      setStatus('', 'info');
-      try {
-        const res = await fetch(FORMSPREE_ENDPOINT, {
-          method: 'POST',
-          headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
-        });
-        if (res.ok) {
-          setStatus('Danke! Wir melden uns kurz bei dir.', 'success');
-          form.reset();
-        } else {
-          const data = await res.json().catch(() => ({}));
-          const msg =
-            (data && data.errors && data.errors[0] && data.errors[0].message) ||
-            'Hat nicht geklappt. Bitte später erneut versuchen.';
-          setStatus(msg, 'error');
-        }
-      } catch (err) {
-        setStatus('Netzwerkfehler. Bitte später erneut versuchen.', 'error');
-      } finally {
-        setLoading(false);
-      }
-    });
-  }
-
-  // ── Reveal on scroll (skipped under reduced motion) ─────────────
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduce && 'IntersectionObserver' in window) {
-    const targets = document.querySelectorAll('section > div, article, figure');
-    targets.forEach((el) => el.classList.add('reveal'));
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.08 }
-    );
-    targets.forEach((el) => io.observe(el));
+  if (!reduce) {
+    document.querySelectorAll('.group[class*="cursor-pointer"], article').forEach(el => {
+      el.addEventListener('mouseenter', () => el.style.transform = 'translateY(-2px)');
+      el.addEventListener('mouseleave', () => el.style.transform = '');
+    });
   }
 })();
