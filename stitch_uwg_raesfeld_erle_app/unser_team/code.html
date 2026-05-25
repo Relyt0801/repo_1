@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf8ff;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#faf8ff",
+                        "on-primary-fixed": "#001551",
+                        "primary-fixed": "#dce1ff",
+                        "secondary-fixed-dim": "#ffb599",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#76eab6",
+                        "surface-container": "#eaedff",
+                        "surface-container-low": "#f2f3ff",
+                        "on-surface": "#131b2e",
+                        "surface": "#faf8ff",
+                        "secondary": "#a73a00",
+                        "on-secondary-fixed-variant": "#7f2b00",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-primary-container": "#cad3ff",
+                        "surface-tint": "#2151da",
+                        "on-secondary-fixed": "#370e00",
+                        "on-background": "#131b2e",
+                        "surface-container-highest": "#dae2fd",
+                        "tertiary-fixed": "#85f8c4",
+                        "inverse-surface": "#283044",
+                        "surface-container-high": "#e2e7ff",
+                        "primary": "#0037b0",
+                        "secondary-fixed": "#ffdbce",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "inverse-primary": "#b7c4ff",
+                        "primary-container": "#1d4ed8",
+                        "tertiary": "#004f35",
+                        "surface-bright": "#faf8ff",
+                        "outline": "#747686",
+                        "inverse-on-surface": "#eef0ff",
+                        "secondary-container": "#fd651e",
+                        "surface-dim": "#d2d9f4",
+                        "surface-variant": "#dae2fd",
+                        "on-surface-variant": "#434655",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#006948",
+                        "on-tertiary-fixed": "#002114",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-secondary-container": "#571a00",
+                        "outline-variant": "#c4c5d7",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "32px",
+                        "margin-desktop": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "max-width": "1200px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-bold": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Fira Sans"],
+                        "body-base": ["Inter"],
+                        "display-lg-mobile": ["Fira Sans"],
+                        "headline-md": ["Fira Sans"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-bold": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-base": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-md max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">UWG Raesfeld-Erle</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-lg items-center">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs" href="#">Home</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs" href="#">Program</a>
+<a class="font-label-sm text-label-sm text-primary border-b-[3px] border-primary hover:bg-surface-container-low transition-colors px-sm py-xs" href="#">Team</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs" href="#">Contact</a>
+<div class="flex gap-md ml-md">
+<span class="material-symbols-outlined text-primary cursor-pointer">account_circle</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+</div>
+</nav>
+<!-- Mobile Menu Trigger -->
+<div class="md:hidden flex items-center">
+<span class="material-symbols-outlined text-primary">menu</span>
+</div>
+</div>
+</header>
+<main class="pt-[80px] pb-xl max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero / Intro -->
+<section class="py-xl">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md">Unser Team für Raesfeld &amp; Erle</h1>
+<p class="font-body-base text-body-base text-on-surface-variant max-w-2xl">
+                Lernen Sie die Menschen hinter der UWG kennen. Wir sind Bürger aus der Mitte der Gesellschaft, die sich leidenschaftlich für eine transparente und sachorientierte Kommunalpolitik einsetzen.
+            </p>
+</section>
+<!-- Filters -->
+<div class="flex flex-wrap gap-sm mb-xl sticky top-[72px] bg-background/95 backdrop-blur-sm py-md z-40 border-b border-outline-variant">
+<button class="filter-btn px-md py-sm rounded-lg bg-primary text-on-primary font-body-bold text-body-bold transition-all" id="filter-all" onclick="filterTeam('all')">Alle</button>
+<button class="filter-btn px-md py-sm rounded-lg bg-surface-container-high text-on-surface-variant font-body-bold text-body-bold hover:bg-surface-container-highest transition-all" id="filter-council" onclick="filterTeam('council')">Gemeinderat</button>
+<button class="filter-btn px-md py-sm rounded-lg bg-surface-container-high text-on-surface-variant font-body-bold text-body-bold hover:bg-surface-container-highest transition-all" id="filter-board" onclick="filterTeam('board')">Vorstand</button>
+<button class="filter-btn px-md py-sm rounded-lg bg-surface-container-high text-on-surface-variant font-body-bold text-body-bold hover:bg-surface-container-highest transition-all" id="filter-candidates" onclick="filterTeam('candidates')">Kandidaten</button>
+</div>
+<!-- Team Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md" id="team-grid">
+<!-- Card 1: Fraktionsvorsitzender -->
+<div class="team-card council board bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300" data-category="council board">
+<div class="aspect-[4/5] overflow-hidden relative bg-surface-container">
+<img alt="Team Member" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A professional headshot of a middle-aged male politician in a dark blue business suit and white shirt. He is standing against a soft gray architectural background with natural lighting, projecting an air of confidence, reliability, and local governance experience. The image follows a corporate modern style with high-contrast sharp edges and a clean, professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA1hcVsYOayIFdyY1JDgQm2AUyqVG-ZxmUxnIPXrZlzWoRx4EeBYfatP6Jetjgm1CZgcDCSkS3JkF5D47RhJlPuT8tE5ZiZLPNdbCHJwJAQ5W3EIVNX97g2aa9tzpsIAhiwc-NetJhNA4uzhmS38xagIcTL-hkGY60_ze6borK6VfG0BHm0a0XuiAOE3kNjiF0XjDlth9OU40nZdDVpxQYzF87QLmRpFdo0grmjT8MPLlOa4a5z3dVvM1vNY6y8WUcYCXjAgF9ivM"/>
+<div class="absolute top-md left-md">
+<span class="bg-primary text-on-primary font-label-caps text-label-caps px-sm py-xs uppercase">Fraktionsvorsitz</span>
+</div>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Hans-Werner Schmidt</h3>
+<p class="font-body-bold text-body-bold text-primary mb-md">Diplom-Verwaltungswirt</p>
+<hr class="border-outline-variant mb-md"/>
+<p class="font-body-base text-body-base text-on-surface-variant italic border-l-4 border-secondary pl-md">
+                        "Ehrliche Politik beginnt beim Zuhören. Wir gestalten Raesfeld gemeinsam."
+                    </p>
+</div>
+</div>
+<!-- Card 2: Candidate -->
+<div class="team-card candidates bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300" data-category="candidates">
+<div class="aspect-[4/5] overflow-hidden relative bg-surface-container">
+<img alt="Team Member" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A professional headshot of a female candidate in business casual attire, smiling warmly. She is positioned in a modern office environment with bright, diffused window light creating a professional and approachable mood. The color palette is clean, featuring corporate blues and soft whites, embodying transparency and community dedication in a broadsheet-journalism style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_c9_kJZipScD5R1hjh-qApfaNJ_M8GURcEmQhhlxsqzylIl8_BSVkzydsBl7ebrmwiDKaTldzVpXaXICUSawJZxhvb0PIrr703vPQczWHJ-MlymPkyqhdD8u9V0nqam_0hjyGrxQW7lHQ4TTdLHOR3SfVgeCLNKUQlo60pgOYD5oqvULOJdGFD4OxTNMwVoeOd7zXTLPwZl_my4R58VfZzK8s3xmLth3UGigwbShbLa-A7SvRrW8CQ1zvNYrt6gToXyBU2VyY7IE"/>
+<div class="absolute top-md left-md">
+<span class="bg-secondary text-on-secondary font-label-caps text-label-caps px-sm py-xs uppercase">Kandidatin</span>
+</div>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Sandra Müller</h3>
+<p class="font-body-bold text-body-bold text-primary mb-md">Unternehmerin</p>
+<hr class="border-outline-variant mb-md"/>
+<p class="font-body-base text-body-base text-on-surface-variant italic border-l-4 border-secondary pl-md">
+                        "Nachhaltigkeit und Wirtschaftswachstum müssen in Erle Hand in Hand gehen."
+                    </p>
+</div>
+</div>
+<!-- Card 3: Board Member -->
+<div class="team-card board bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300" data-category="board">
+<div class="aspect-[4/5] overflow-hidden relative bg-surface-container">
+<img alt="Team Member" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A studio portrait of a senior board member with graying hair, wearing a professional tweed blazer. The lighting is dramatic but controlled, emphasizing trust and experience. The background is a solid deep slate color, maintaining the authoritative and dependable identity of the UWG Raesfeld-Erle political brand. The composition is centered and balanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUIyiKk2xblc3C6tyoy18s3DjagNjJH0VVbOsCiD74i54RFHb1PVgLviEfTYPAFdEBqi-_gJ3-PlcLEP3qTCBA-iCir9Yssg0yJKRJdNdKlnC7X7-GiL92c36RbUlQ8qWzXB3tP0cr2fNPc180MBBzCZn0vHcXrk4XIBWlB0XlmXU66iifM7cbBVY9YR8P5v0MTS1Al9_JUlZU4mIYkdvgpK1BoZtU22nfRpe2ixzkF36gtLedVEZcjvHPdpPf8fpcT5w90Qm0EKw"/>
+<div class="absolute top-md left-md">
+<span class="bg-tertiary text-on-tertiary font-label-caps text-label-caps px-sm py-xs uppercase">Vorstand</span>
+</div>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Karl-Heinz Weber</h3>
+<p class="font-body-bold text-body-bold text-primary mb-md">Kassierer</p>
+<hr class="border-outline-variant mb-md"/>
+<p class="font-body-base text-body-base text-on-surface-variant italic border-l-4 border-secondary pl-md">
+                        "Transparente Finanzen sind das Fundament einer starken Gemeinde."
+                    </p>
+</div>
+</div>
+<!-- Card 4: Council Member -->
+<div class="team-card council bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300" data-category="council">
+<div class="aspect-[4/5] overflow-hidden relative bg-surface-container">
+<img alt="Team Member" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A sharp, detailed headshot of a young male professional wearing a light blue dress shirt, looking directly into the camera. The setting is outdoors in a clean, urban environment with soft bokeh of modern architecture. The lighting is crisp and bright, aligning with a municipal transparency theme and corporate modern aesthetic. High-density visual clarity defines the mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANr1w54ed6rS45pO5yFkqboTBto6EMAGhT13_LIERI6950ZXl95aRkNNU0FWR4FJmJ58akqumAdkunlztvz0ObOsGbwopcOaaXNRSdqjNZgkrcKIYz8SCIuRG3iYOk803_-LhWneitHmGLLkZtS2GZ1w8B5hOcE_Sv1Dj38wSIbt5XhUdYGRwymTR5TQyG7KV_0-22i7n6opRtl9RsueZpHzjw9qX3KE4EmuQ1QPdGKYn2fl35Q1xLWN7Z8y5In78-MRLPo1Wdaes"/>
+<div class="absolute top-md left-md">
+<span class="bg-primary text-on-primary font-label-caps text-label-caps px-sm py-xs uppercase">Gemeinderat</span>
+</div>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Markus Vogt</h3>
+<p class="font-body-bold text-body-bold text-primary mb-md">Ingenieur</p>
+<hr class="border-outline-variant mb-md"/>
+<p class="font-body-base text-body-base text-on-surface-variant italic border-l-4 border-secondary pl-md">
+                        "Moderne Infrastruktur für eine zukunftssichere Heimat."
+                    </p>
+</div>
+</div>
+<!-- Card 5: Board Member -->
+<div class="team-card board bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300" data-category="board">
+<div class="aspect-[4/5] overflow-hidden relative bg-surface-container">
+<img alt="Team Member" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Headshot of a professional woman with a welcoming expression, dressed in a formal charcoal blazer. The shot is captured in a high-density, professional style with a neutral background that emphasizes the subject. The lighting is balanced and clean, conveying institutional strength and civic seriousness. Every detail is rendered with crisp authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD05DAYHZ9zGlqJKmD49lXrjnMaEy8x4dgM82mSnMKDXngGASBu6BvRr0w9wIn7V6hyWOFmqEJGB7wZZrZAhxzd1ppIWX1RDxi4K5o14OBUqGlNP3wOaPEsJQ1JwJopOeqXtM-PweulWuQbQDz8lmdHpBsb_AlwbOagKAsO5OofKkSLZqu3IM4GzgNQSwOkWhLztms42npxC5SOv9OmhDhDLGHdDPbcuviWr1pIhKQdD6Kqb-G0id3_BSftCiY4wJjVpa7QFyYTT0I"/>
+<div class="absolute top-md left-md">
+<span class="bg-tertiary text-on-tertiary font-label-caps text-label-caps px-sm py-xs uppercase">Vorstand</span>
+</div>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Elena Fischer</h3>
+<p class="font-body-bold text-body-bold text-primary mb-md">Schriftführerin</p>
+<hr class="border-outline-variant mb-md"/>
+<p class="font-body-base text-body-base text-on-surface-variant italic border-l-4 border-secondary pl-md">
+                        "Präzise Dokumentation für nachvollziehbare Entscheidungen."
+                    </p>
+</div>
+</div>
+<!-- Card 6: Candidate -->
+<div class="team-card candidates bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-300" data-category="candidates">
+<div class="aspect-[4/5] overflow-hidden relative bg-surface-container">
+<img alt="Team Member" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Portrait of a male community leader in a business casual sweater, standing in a sunny outdoor plaza in a small town. The lighting is warm and natural, suggesting a rootedness in the local community. The image style is clear and authoritative, following the flat municipal aesthetic of the UWG brand with no filters and high information density." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnfQR5i5rFJ7h-fmo_-ffn3fhu7r6XQ2cVAd_jvFIUqbWAT6KlaJbmC7xYfssqbbcn5Ee3iDkKg5JvzCUYJlEhCfpNn0Yg3UANV5xgXugOT-55XhMO633_IMzvxL6t-lWB6_eNe-mnEse6dAU29x-43jLMvlq8A8yPHJLPGacINz-M93MqFJFcAM8iGgLxbDw1ste199_vhIk9oiYQk83rBO-xhXm69O957yXFMqpHiRCq8LPIqorEAS9kTRcwu3ba5qIQ2IlCP9g"/>
+<div class="absolute top-md left-md">
+<span class="bg-secondary text-on-secondary font-label-caps text-label-caps px-sm py-xs uppercase">Kandidat</span>
+</div>
+</div>
+<div class="p-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Tobias Kämper</h3>
+<p class="font-body-bold text-body-bold text-primary mb-md">Landwirt</p>
+<hr class="border-outline-variant mb-md"/>
+<p class="font-body-base text-body-base text-on-surface-variant italic border-l-4 border-secondary pl-md">
+                        "Unsere Natur ist unser Kapital. Wir müssen sie bewahren."
+                    </p>
+</div>
+</div>
+</div>
+<!-- Contact Team Section -->
+<section class="mt-[64px] bg-surface-container-high p-xl border border-outline-variant">
+<div class="flex flex-col md:flex-row gap-xl items-start">
+<div class="md:w-1/2">
+<h2 class="font-headline-md text-headline-md text-primary mb-md uppercase tracking-wider">Kontaktieren Sie uns</h2>
+<p class="font-body-base text-body-base text-on-surface-variant mb-lg">
+                        Haben Sie Fragen zu unserem Programm oder möchten Sie ein Teammitglied persönlich sprechen? Wir sind für Sie da.
+                    </p>
+<div class="space-y-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span class="font-body-bold text-body-bold">info@uwg-raesfeld-erle.de</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="font-body-bold text-body-bold">Rathausplatz 1, 46348 Raesfeld</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">campaign</span>
+<span class="font-body-bold text-body-bold">Bürgersprechstunde: Jeden 1. Montag im Monat</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 w-full">
+<form class="space-y-md">
+<div>
+<label class="font-body-bold text-body-bold mb-xs block">Ihr Name</label>
+<input class="w-full p-md bg-white border border-outline focus:outline-none focus:ring-2 focus:ring-primary rounded-lg" placeholder="Max Mustermann" type="text"/>
+</div>
+<div>
+<label class="font-body-bold text-body-bold mb-xs block">E-Mail Adresse</label>
+<input class="w-full p-md bg-white border border-outline focus:outline-none focus:ring-2 focus:ring-primary rounded-lg" placeholder="mail@beispiel.de" type="email"/>
+</div>
+<div>
+<label class="font-body-bold text-body-bold mb-xs block">Nachricht</label>
+<textarea class="w-full p-md bg-white border border-outline focus:outline-none focus:ring-2 focus:ring-primary rounded-lg" placeholder="Wie können wir Ihnen helfen?" rows="4"></textarea>
+</div>
+<button class="bg-secondary-container text-on-secondary-container px-xl py-md font-body-bold text-body-bold w-full uppercase tracking-widest hover:opacity-90 transition-opacity" type="submit">Nachricht senden</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-high border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-xl gap-md max-w-max-width mx-auto">
+<div class="flex flex-col gap-xs">
+<div class="font-headline-md text-headline-md font-bold text-primary">UWG Raesfeld-Erle</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 UWG Raesfeld-Erle. Transparenz &amp; Bürgernähe.</p>
+</div>
+<nav class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Imprint</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Statutes</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Press</a>
+</nav>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface border-t border-outline-variant z-50 h-16 flex justify-around items-center">
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-1">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-1">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-sm text-label-sm">Program</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary border-t-[3px] border-primary pt-1 scale-95">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Team</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-1">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-label-sm text-label-sm">Contact</span>
+</div>
+</nav>
+<script>
+        function filterTeam(category) {
+            const cards = document.querySelectorAll('.team-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update buttons
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-on-primary');
+                btn.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+            });
+            document.getElementById('filter-' + category).classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+            document.getElementById('filter-' + category).classList.add('bg-primary', 'text-on-primary');
+
+            // Update cards
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category').includes(category)) {
+                    card.style.display = 'block';
+                    card.classList.add('animate-fadeIn');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Simple fade in effect
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fadeIn {
+                animation: fadeIn 0.4s ease-out forwards;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

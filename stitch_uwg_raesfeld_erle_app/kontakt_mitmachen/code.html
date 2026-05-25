@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Fira+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#faf8ff",
+                    "on-primary-fixed": "#001551",
+                    "primary-fixed": "#dce1ff",
+                    "secondary-fixed-dim": "#ffb599",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#76eab6",
+                    "surface-container": "#eaedff",
+                    "surface-container-low": "#f2f3ff",
+                    "on-surface": "#131b2e",
+                    "surface": "#faf8ff",
+                    "secondary": "#a73a00",
+                    "on-secondary-fixed-variant": "#7f2b00",
+                    "tertiary-fixed-dim": "#68dba9",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "on-primary-container": "#cad3ff",
+                    "surface-tint": "#2151da",
+                    "on-secondary-fixed": "#370e00",
+                    "on-background": "#131b2e",
+                    "surface-container-highest": "#dae2fd",
+                    "tertiary-fixed": "#85f8c4",
+                    "inverse-surface": "#283044",
+                    "surface-container-high": "#e2e7ff",
+                    "primary": "#0037b0",
+                    "secondary-fixed": "#ffdbce",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "inverse-primary": "#b7c4ff",
+                    "primary-container": "#1d4ed8",
+                    "tertiary": "#004f35",
+                    "surface-bright": "#faf8ff",
+                    "outline": "#747686",
+                    "inverse-on-surface": "#eef0ff",
+                    "secondary-container": "#fd651e",
+                    "surface-dim": "#d2d9f4",
+                    "surface-variant": "#dae2fd",
+                    "on-surface-variant": "#434655",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#006948",
+                    "on-tertiary-fixed": "#002114",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "on-secondary-container": "#571a00",
+                    "outline-variant": "#c4c5d7",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xl": "32px",
+                    "margin-desktop": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "max-width": "1200px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-bold": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Fira Sans"],
+                    "body-base": ["Inter"],
+                    "display-lg-mobile": ["Fira Sans"],
+                    "headline-md": ["Fira Sans"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "body-bold": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-base": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-base overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-background border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-md max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">UWG Raesfeld-Erle</div>
+<nav class="hidden md:flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-2 py-1" href="#">Home</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-2 py-1" href="#">Program</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-2 py-1" href="#">Team</a>
+<a class="font-label-sm text-label-sm text-primary dark:text-primary-fixed border-b-[3px] border-primary dark:border-primary-fixed px-2 py-1" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<main class="pt-[80px] pb-[100px] max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section -->
+<section class="py-xl">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-sm">Kontakt &amp; Engagement</h1>
+<p class="text-on-surface-variant font-body-base max-w-2xl">Gestalten Sie die Zukunft unserer Gemeinde aktiv mit. Ob Anregungen, Kritik oder Interesse an einer Mitarbeit – wir sind für Sie da.</p>
+</section>
+<div class="bento-grid">
+<!-- Citizen Consultation (Bürgersprechstunde) -->
+<div class="col-span-12 md:col-span-4 bg-surface border border-outline-variant p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm text-primary">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">DIALOG</span>
+</div>
+<h2 class="font-headline-md text-headline-md">Bürgersprechstunde</h2>
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center py-sm border-b border-outline-variant/30">
+<span class="font-body-bold text-body-bold">Jeden 1. Montag</span>
+<span class="text-on-surface-variant">18:00 - 19:30</span>
+</div>
+<div class="flex justify-between items-center py-sm border-b border-outline-variant/30">
+<span class="font-body-bold text-body-bold">Dorfhaus Erle</span>
+<span class="text-on-surface-variant">Raum 1.02</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-label-sm text-label-sm italic">Kommen Sie ohne Voranmeldung vorbei. Wir hören Ihnen zu.</p>
+<button class="mt-auto bg-primary text-on-primary font-body-bold text-body-bold py-md px-lg hover:opacity-90 transition-opacity">Termin vormerken</button>
+</div>
+<!-- Contact Form -->
+<div class="col-span-12 md:col-span-8 bg-surface border border-outline-variant p-lg">
+<h2 class="font-headline-md text-headline-md mb-lg">Schreiben Sie uns</h2>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-body-bold text-body-bold">Name</label>
+<input class="bg-white border border-outline p-md rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-container transition-all" placeholder="Ihr Name" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-body-bold text-body-bold">E-Mail</label>
+<input class="bg-white border border-outline p-md rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-container transition-all" placeholder="mail@beispiel.de" type="email"/>
+</div>
+<div class="flex flex-col gap-xs md:col-span-2">
+<label class="font-body-bold text-body-bold">Nachricht</label>
+<textarea class="bg-white border border-outline p-md rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-container transition-all resize-none" placeholder="Wie können wir Ihnen helfen?" rows="4"></textarea>
+</div>
+<div class="md:col-span-2 flex items-center gap-sm mt-sm">
+<input class="w-4 h-4 text-primary border-outline rounded" id="privacy" type="checkbox"/>
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="privacy">Ich akzeptiere die Datenschutzbestimmungen.</label>
+</div>
+<button class="md:col-span-1 bg-secondary text-on-secondary font-body-bold text-body-bold py-md px-lg hover:opacity-90 transition-all" type="submit">Nachricht senden</button>
+</form>
+</div>
+<!-- Become a Member / Support -->
+<div class="col-span-12 md:col-span-7 relative group overflow-hidden border border-outline-variant min-h-[320px]">
+<img alt="Citizens collaborating" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A candid, high-resolution photograph of a diverse group of focused citizens sitting around a large oak table in a modern, sun-lit community hall. The lighting is warm and natural, emphasizing the professional and collaborative municipal atmosphere. The participants are engaged in a serious discussion, with documents and laptops neatly arranged. The overall color palette is dominated by professional blues and warm wood tones, reflecting a sense of local rootedness and civic responsibility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhXSYjSSwpV28jIDj4hN-jLTBfgzDHRHrV6PAAJLMuZzyb8oSyoODCFNpf34v6ZcQdefjqoctMsuzuO1OXVptR5ZrZEMR-lA_jhaVSxaOlZoCan15_gjnvlY07QsPOARYoiVBorI96CqI5Hf-GRYsQtqLTP0PeM4JlrIuIIWm9_FSDqj2ye_uEHddTK7IOTsKXn9L6oQYBhK8rIhiZ_By7SICwmHEVqD0FHl8ZsFZOd4VxvSIMX5IsEiAM5RFxtYp2KM5TzutCiz8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-lg text-on-primary">
+<h3 class="font-headline-md text-headline-md mb-sm">Mitglied werden</h3>
+<p class="font-body-base text-body-base max-w-md mb-md">Unterstützen Sie uns als aktives Mitglied oder Fördermitglied. Gemeinsam gestalten wir Raesfeld und Erle.</p>
+<div class="flex gap-md">
+<a class="bg-white text-primary font-body-bold text-body-bold py-sm px-lg hover:bg-surface-container-high transition-colors" href="#">Antrag laden</a>
+<a class="border border-white text-white font-body-bold text-body-bold py-sm px-lg hover:bg-white/10 transition-colors" href="#">Mehr erfahren</a>
+</div>
+</div>
+</div>
+<!-- Map & Office -->
+<div class="col-span-12 md:col-span-5 bg-surface border border-outline-variant p-lg flex flex-col gap-md">
+<h3 class="font-headline-md text-headline-md">Unser Büro</h3>
+<div class="w-full h-40 bg-surface-container-high rounded-lg overflow-hidden border border-outline-variant">
+<!-- Map Placeholder -->
+<div class="w-full h-full flex items-center justify-center bg-slate-100 relative" data-location="Raesfeld, Germany" style="">
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#0037b0 0.5px, transparent 0.5px); background-size: 10px 10px;"></div>
+<div class="z-10 flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="location_on">location_on</span>
+<span class="font-label-sm text-label-sm text-primary">Schloßstraße, Raesfeld</span>
+</div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="map">map</span>
+<span class="text-on-surface-variant font-body-base">Schloßstraße 12, 46348 Raesfeld</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="phone">phone</span>
+<span class="text-on-surface-variant font-body-base">02865 / 12345-0</span>
+</div>
+</div>
+<div class="flex gap-md mt-auto">
+<a class="p-sm border border-outline-variant hover:border-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-primary" data-icon="facebook">social_leaderboard</span>
+</a>
+<a class="p-sm border border-outline-variant hover:border-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-primary" data-icon="alternate_email">alternate_email</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface dark:bg-background border-t border-outline-variant dark:border-outline">
+<div class="flex justify-around items-center w-full h-16">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant pt-1" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant pt-1" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-label-sm text-label-sm">Program</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant pt-1" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Team</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed border-t-[3px] border-primary dark:border-primary-fixed pt-1 scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="font-label-sm text-label-sm">Contact</span>
+</a>
+</div>
+</nav>
+<!-- Footer -->
+<footer class="bg-surface-container-high dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-xl gap-md max-w-max-width mx-auto">
+<div class="flex flex-col gap-sm">
+<span class="font-headline-md text-headline-md font-bold text-primary">UWG Raesfeld-Erle</span>
+<span class="font-body-base text-body-base text-on-surface">© 2024 UWG Raesfeld-Erle. Transparenz &amp; Bürgernähe.</span>
+</div>
+<div class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Imprint</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Statutes</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Press</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple form interaction
+        const contactForm = document.querySelector('form');
+        if(contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button');
+                const originalText = btn.innerText;
+                btn.innerText = 'Wird gesendet...';
+                btn.classList.add('opacity-50');
+                
+                setTimeout(() => {
+                    btn.innerText = 'Gesendet!';
+                    btn.classList.remove('bg-secondary');
+                    btn.classList.add('bg-tertiary-container', 'text-on-tertiary-container');
+                    contactForm.reset();
+                    
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.classList.remove('bg-tertiary-container', 'text-on-tertiary-container', 'opacity-50');
+                        btn.classList.add('bg-secondary');
+                    }, 3000);
+                }, 1500);
+            });
+        }
+    </script>
+</body></html>

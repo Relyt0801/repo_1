@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf8ff;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(#2151da10 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .initial-bg {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(33, 81, 218, 0.04);
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#faf8ff",
+                        "on-primary-fixed": "#001551",
+                        "primary-fixed": "#dce1ff",
+                        "secondary-fixed-dim": "#ffb599",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#76eab6",
+                        "surface-container": "#eaedff",
+                        "surface-container-low": "#f2f3ff",
+                        "on-surface": "#131b2e",
+                        "surface": "#faf8ff",
+                        "secondary": "#a73a00",
+                        "on-secondary-fixed-variant": "#7f2b00",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-primary-container": "#cad3ff",
+                        "surface-tint": "#2151da",
+                        "on-secondary-fixed": "#370e00",
+                        "on-background": "#131b2e",
+                        "surface-container-highest": "#dae2fd",
+                        "tertiary-fixed": "#85f8c4",
+                        "inverse-surface": "#283044",
+                        "surface-container-high": "#e2e7ff",
+                        "primary": "#0037b0",
+                        "secondary-fixed": "#ffdbce",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "inverse-primary": "#b7c4ff",
+                        "primary-container": "#1d4ed8",
+                        "tertiary": "#004f35",
+                        "surface-bright": "#faf8ff",
+                        "outline": "#747686",
+                        "inverse-on-surface": "#eef0ff",
+                        "secondary-container": "#fd651e",
+                        "surface-dim": "#d2d9f4",
+                        "surface-variant": "#dae2fd",
+                        "on-surface-variant": "#434655",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#006948",
+                        "on-tertiary-fixed": "#002114",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-secondary-container": "#571a00",
+                        "outline-variant": "#c4c5d7",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "32px",
+                        "margin-desktop": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "max-width": "1200px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-bold": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Fira Sans"],
+                        "body-base": ["Inter"],
+                        "display-lg-mobile": ["Fira Sans"],
+                        "headline-md": ["Fira Sans"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-bold": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-base": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background bg-pattern">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-md border-b border-outline-variant fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-md max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">UWG Raesfeld-Erle</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs" href="#">Home</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs" href="#">Program</a>
+<a class="font-label-sm text-label-sm text-primary border-b-[3px] border-primary hover:bg-surface-container-low transition-colors px-sm py-xs" href="#">Team</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs" href="#">Contact</a>
+<div class="flex gap-md ml-md">
+<span class="material-symbols-outlined text-primary cursor-pointer">account_circle</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+</div>
+</nav>
+<div class="md:hidden flex items-center">
+<span class="material-symbols-outlined text-primary">menu</span>
+</div>
+</div>
+</header>
+<main class="pt-[100px] pb-xl max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop relative">
+<!-- Decorative Blobs -->
+<div class="absolute top-0 right-0 -z-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl opacity-50"></div>
+<div class="absolute top-40 left-0 -z-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl opacity-50"></div>
+<!-- Hero / Intro -->
+<section class="py-xl relative">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md leading-tight">Unser Team für<br/>Raesfeld &amp; Erle</h1>
+<p class="font-body-base text-body-base text-on-surface-variant max-w-2xl text-lg">
+                Lernen Sie die Menschen hinter der UWG kennen. Wir sind Bürger aus der Mitte der Gesellschaft, die sich leidenschaftlich für eine transparente und sachorientierte Kommunalpolitik einsetzen.
+            </p>
+</section>
+<!-- Filters -->
+<div class="flex flex-wrap gap-sm mb-xl sticky top-[72px] bg-background/90 backdrop-blur-md py-md z-40 border-b border-outline-variant">
+<button class="filter-btn px-md py-sm rounded-full bg-primary text-on-primary font-body-bold text-body-bold transition-all shadow-md shadow-primary/20" id="filter-all" onclick="filterTeam('all')">Alle</button>
+<button class="filter-btn px-md py-sm rounded-full bg-surface-container-high text-on-surface-variant font-body-bold text-body-bold hover:bg-surface-container-highest transition-all" id="filter-council" onclick="filterTeam('council')">Gemeinderat</button>
+<button class="filter-btn px-md py-sm rounded-full bg-surface-container-high text-on-surface-variant font-body-bold text-body-bold hover:bg-surface-container-highest transition-all" id="filter-board" onclick="filterTeam('board')">Vorstand</button>
+<button class="filter-btn px-md py-sm rounded-full bg-surface-container-high text-on-surface-variant font-body-bold text-body-bold hover:bg-surface-container-highest transition-all" id="filter-candidates" onclick="filterTeam('candidates')">Kandidaten</button>
+</div>
+<!-- Dynamic Team Grid (Varying heights via md:grid-cols-2 lg:grid-cols-3 with spans) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-md" id="team-grid">
+<!-- Card 1: Main Leader (Larger) -->
+<div class="team-card council board lg:col-span-3 bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 relative" data-category="council board">
+<div class="initial-bg">HS</div>
+<div class="aspect-video lg:aspect-[16/10] overflow-hidden relative bg-surface-container">
+<img alt="Hans-Werner Schmidt" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA1hcVsYOayIFdyY1JDgQm2AUyqVG-ZxmUxnIPXrZlzWoRx4EeBYfatP6Jetjgm1CZgcDCSkS3JkF5D47RhJlPuT8tE5ZiZLPNdbCHJwJAQ5W3EIVNX97g2aa9tzpsIAhiwc-NetJhNA4uzhmS38xagIcTL-hkGY60_ze6borK6VfG0BHm0a0XuiAOE3kNjiF0XjDlth9OU40nZdDVpxQYzF87QLmRpFdo0grmjT8MPLlOa4a5z3dVvM1vNY6y8WUcYCXjAgF9ivM"/>
+<div class="absolute top-md left-md">
+<span class="bg-primary text-on-primary font-label-caps text-label-caps px-md py-sm rounded-full shadow-lg">FRAKTIONSVORSITZ</span>
+</div>
+</div>
+<div class="p-lg relative bg-white">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Hans-Werner Schmidt</h3>
+<p class="font-body-bold text-body-bold text-primary mb-md">Diplom-Verwaltungswirt</p>
+<blockquote class="font-body-base text-body-base text-on-surface-variant italic border-l-4 border-secondary pl-md mt-4">
+    "Ehrliche Politik beginnt beim Zuhören. Wir gestalten Raesfeld gemeinsam."
+</blockquote>
+</div>
+</div>
+<!-- Card 2: Candidate -->
+<div class="team-card candidates lg:col-span-3 bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 relative" data-category="candidates">
+<div class="initial-bg">SM</div>
+<div class="aspect-video lg:aspect-[16/10] overflow-hidden relative bg-surface-container">
+<img alt="Sandra Müller" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_c9_kJZipScD5R1hjh-qApfaNJ_M8GURcEmQhhlxsqzylIl8_BSVkzydsBl7ebrmwiDKaTldzVpXaXICUSawJZxhvb0PIrr703vPQczWHJ-MlymPkyqhdD8u9V0nqam_0hjyGrxQW7lHQ4TTdLHOR3SfVgeCLNKUQlo60pgOYD5oqvULOJdGFD4OxTNMwVoeOd7zXTLPwZl_my4R58VfZzK8s3xmLth3UGigwbShbLa-A7SvRrW8CQ1zvNYrt6gToXyBU2VyY7IE"/>
+<div class="absolute top-md left-md">
+<span class="bg-secondary text-on-secondary font-label-caps text-label-caps px-md py-sm rounded-full shadow-lg">KANDIDATIN</span>
+</div>
+</div>
+<div class="p-lg relative bg-white">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Sandra Müller</h3>
+<p class="font-body-bold text-body-bold text-primary mb-md">Unternehmerin</p>
+<blockquote class="font-body-base text-body-base text-on-surface-variant italic border-l-4 border-secondary pl-md mt-4">
+    "Nachhaltigkeit und Wirtschaftswachstum müssen in Erle Hand in Hand gehen."
+</blockquote>
+</div>
+</div>
+<!-- Card 3: Board Member (Regular) -->
+<div class="team-card board lg:col-span-2 bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 relative" data-category="board">
+<div class="initial-bg">KW</div>
+<div class="aspect-[4/5] overflow-hidden relative bg-surface-container">
+<img alt="Karl-Heinz Weber" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUIyiKk2xblc3C6tyoy18s3DjagNjJH0VVbOsCiD74i54RFHb1PVgLviEfTYPAFdEBqi-_gJ3-PlcLEP3qTCBA-iCir9Yssg0yJKRJdNdKlnC7X7-GiL92c36RbUlQ8qWzXB3tP0cr2fNPc180MBBzCZn0vHcXrk4XIBWlB0XlmXU66iifM7cbBVY9YR8P5v0MTS1Al9_JUlZU4mIYkdvgpK1BoZtU22nfRpe2ixzkF36gtLedVEZcjvHPdpPf8fpcT5w90Qm0EKw"/>
+<div class="absolute top-md left-md">
+<span class="bg-tertiary text-on-tertiary font-label-caps text-label-caps px-sm py-xs rounded">VORSTAND</span>
+</div>
+</div>
+<div class="p-md bg-white">
+<h3 class="font-headline-md text-headline-md text-on-surface">Karl-Heinz Weber</h3>
+<p class="font-body-bold text-body-bold text-primary">Kassierer</p>
+</div>
+</div>
+<!-- Card 4: Council Member -->
+<div class="team-card council lg:col-span-2 bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 relative" data-category="council">
+<div class="initial-bg">MV</div>
+<div class="aspect-[4/5] overflow-hidden relative bg-surface-container">
+<img alt="Markus Vogt" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANr1w54ed6rS45pO5yFkqboTBto6EMAGhT13_LIERI6950ZXl95aRkNNU0FWR4FJmJ58akqumAdkunlztvz0ObOsGbwopcOaaXNRSdqjNZgkrcKIYz8SCIuRG3iYOk803_-LhWneitHmGLLkZtS2GZ1w8B5hOcE_Sv1Dj38wSIbt5XhUdYGRwymTR5TQyG7KV_0-22i7n6opRtl9RsueZpHzjw9qX3KE4EmuQ1QPdGKYn2fl35Q1xLWN7Z8y5In78-MRLPo1Wdaes"/>
+<div class="absolute top-md left-md">
+<span class="bg-primary text-on-primary font-label-caps text-label-caps px-sm py-xs rounded">GEMEINDERAT</span>
+</div>
+</div>
+<div class="p-md bg-white">
+<h3 class="font-headline-md text-headline-md text-on-surface">Markus Vogt</h3>
+<p class="font-body-bold text-body-bold text-primary">Ingenieur</p>
+</div>
+</div>
+<!-- Card 5: Board Member -->
+<div class="team-card board lg:col-span-2 bg-white border border-outline-variant overflow-hidden group hover:border-primary transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 relative" data-category="board">
+<div class="initial-bg">EF</div>
+<div class="aspect-[4/5] overflow-hidden relative bg-surface-container">
+<img alt="Elena Fischer" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD05DAYHZ9zGlqJKmD49lXrjnMaEy8x4dgM82mSnMKDXngGASBu6BvRr0w9wIn7V6hyWOFmqEJGB7wZZrZAhxzd1ppIWX1RDxi4K5o14OBUqGlNP3wOaPEsJQ1JwJopOeqXtM-PweulWuQbQDz8lmdHpBsb_AlwbOagKAsO5OofKkSLZqu3IM4GzgNQSwOkWhLztms42npxC5SOv9OmhDhDLGHdDPbcuviWr1pIhKQdD6Kqb-G0id3_BSftCiY4wJjVpa7QFyYTT0I"/>
+<div class="absolute top-md left-md">
+<span class="bg-tertiary text-on-tertiary font-label-caps text-label-caps px-sm py-xs rounded">VORSTAND</span>
+</div>
+</div>
+<div class="p-md bg-white">
+<h3 class="font-headline-md text-headline-md text-on-surface">Elena Fischer</h3>
+<p class="font-body-bold text-body-bold text-primary">Schriftführerin</p>
+</div>
+</div>
+</div>
+<!-- Revitalized Contact Section -->
+<section class="mt-[100px] bg-white rounded-2xl shadow-2xl overflow-hidden border border-outline-variant relative">
+<div class="absolute top-0 right-0 w-1/2 h-full hidden lg:block">
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-[2px] z-10"></div>
+<img alt="UWG Office Environment" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvVsnU_gmxQZA1VxljBKgrz3O7F1NFR3r7tmLNHUhzxH36xpxmcFSV3JWDKhC7knk5dbQn1FMyX3hfgPVolgK1WNJNodmt_TN79f8B4SQTnUO8q6S9SaMsl4_LbVw-AaaeOSerZdkzw00YYNX_1xzEpQD0daItjetcNfIGeG9Q_oILMOWI6WVOGni_2DnqZV8XDA8z-cCRq-wAZV38DnuuTEegvxTg7-A9-S1JQbQoaVeYEkP4Khtc16xbwnaWypuxiNWP_6B-1OY"/>
+<div class="absolute bottom-md left-md z-20 bg-white/90 p-md rounded shadow-lg backdrop-blur">
+<p class="font-label-caps text-label-caps text-primary">BESUCHEN SIE UNS</p>
+<p class="font-body-bold text-body-bold">Rathausplatz 1, Raesfeld</p>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row">
+<div class="lg:w-1/2 p-xl md:p-[64px] relative bg-white">
+<h2 class="font-headline-md text-display-lg-mobile text-primary mb-md uppercase tracking-tight font-bold">In Kontakt bleiben</h2>
+<p class="font-body-base text-body-base text-on-surface-variant mb-xl text-lg">
+    Haben Sie Fragen zu unserem Programm oder möchten Sie ein Teammitglied persönlich sprechen? Wir freuen uns auf den Dialog mit Ihnen.
+</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md mb-xl">
+<div class="flex items-center gap-md p-md bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">mail</span>
+<div>
+<p class="text-xs text-outline font-bold uppercase">E-Mail</p>
+<span class="font-body-bold text-body-bold text-sm">info@uwg-re.de</span>
+</div>
+</div>
+<div class="flex items-center gap-md p-md bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-primary text-3xl">campaign</span>
+<div>
+<p class="text-xs text-outline font-bold uppercase">Sprechstunde</p>
+<span class="font-body-bold text-body-bold text-sm">Jeden 1. Mo / Monat</span>
+</div>
+</div>
+</div>
+<form class="space-y-lg">
+<div class="relative group">
+<label class="font-body-bold text-body-bold mb-xs block text-sm">Ihr Name</label>
+<input class="w-full p-md bg-white border border-outline-variant focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-xl transition-all outline-none" placeholder="Max Mustermann" type="text"/>
+</div>
+<div class="relative group">
+<label class="font-body-bold text-body-bold mb-xs block text-sm">E-Mail Adresse</label>
+<input class="w-full p-md bg-white border border-outline-variant focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-xl transition-all outline-none" placeholder="mail@beispiel.de" type="email"/>
+</div>
+<div class="relative group">
+<label class="font-body-bold text-body-bold mb-xs block text-sm">Nachricht</label>
+<textarea class="w-full p-md bg-white border border-outline-variant focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-xl transition-all outline-none" placeholder="Wie können wir Ihnen helfen?" rows="4"></textarea>
+</div>
+<button class="bg-primary text-on-primary px-xl py-md font-body-bold text-body-bold w-full rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:-translate-y-0.5 transition-all uppercase tracking-widest" type="submit">Nachricht senden</button>
+</form>
+</div>
+<div class="lg:w-1/2 block lg:hidden h-64 bg-surface-container relative">
+<img alt="UWG Office Environment" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD4CwOHqj7uIfNsdztnsLm83NzvZnxIH6p-3DqKDUVxw-WEZsK3UBmpowXUJT4w485fnhUKwRiHss1VwiiXYg4HSIzn_2FPLIpmAdLFCVpYS5bpX4FvFXIT-pky5tqbrFDvesC2TYlUNOX8rN7vJo8tZO0d2SKUHTDM4VY9cmjbZCH1aE1GyCquUHIFId8wRXk0M_A4HxVwLzxqy-SWuqKbi9hOUZvRLSeEP0w64wAecTjsarU_Bz50nTjajgpHjjgW5TUKXLBgd8"/>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-surface-container-highest border-t border-outline-variant mt-xl">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-xl gap-md max-w-max-width mx-auto">
+<div class="flex flex-col gap-xs">
+<div class="font-headline-md text-headline-md font-bold text-primary">UWG Raesfeld-Erle</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 UWG Raesfeld-Erle. Transparenz &amp; Bürgernähe.</p>
+</div>
+<nav class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Imprint</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Statutes</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Press</a>
+</nav>
+</div>
+</footer>
+<nav class="md:hidden fixed bottom-0 w-full bg-surface/90 backdrop-blur-md border-t border-outline-variant z-50 h-16 flex justify-around items-center">
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-1">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-1">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-sm text-label-sm">Program</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary border-t-[3px] border-primary pt-1 scale-95">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Team</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-1">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-label-sm text-label-sm">Contact</span>
+</div>
+</nav>
+<script>
+    function filterTeam(category) {
+        const cards = document.querySelectorAll('.team-card');
+        const buttons = document.querySelectorAll('.filter-btn');
+        
+        buttons.forEach(btn => {
+            btn.classList.remove('bg-primary', 'text-on-primary', 'shadow-md', 'shadow-primary/20');
+            btn.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+        });
+        
+        const activeBtn = document.getElementById('filter-' + category);
+        activeBtn.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+        activeBtn.classList.add('bg-primary', 'text-on-primary', 'shadow-md', 'shadow-primary/20');
+
+        cards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category').includes(category)) {
+                card.style.display = 'block';
+                card.classList.add('animate-fadeIn');
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+</body></html>

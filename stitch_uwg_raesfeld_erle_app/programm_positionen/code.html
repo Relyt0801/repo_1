@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#faf8ff",
+                        "on-primary-fixed": "#001551",
+                        "primary-fixed": "#dce1ff",
+                        "secondary-fixed-dim": "#ffb599",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#76eab6",
+                        "surface-container": "#eaedff",
+                        "surface-container-low": "#f2f3ff",
+                        "on-surface": "#131b2e",
+                        "surface": "#faf8ff",
+                        "secondary": "#a73a00",
+                        "on-secondary-fixed-variant": "#7f2b00",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-primary-container": "#cad3ff",
+                        "surface-tint": "#2151da",
+                        "on-secondary-fixed": "#370e00",
+                        "on-background": "#131b2e",
+                        "surface-container-highest": "#dae2fd",
+                        "tertiary-fixed": "#85f8c4",
+                        "inverse-surface": "#283044",
+                        "surface-container-high": "#e2e7ff",
+                        "primary": "#0037b0",
+                        "secondary-fixed": "#ffdbce",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "inverse-primary": "#b7c4ff",
+                        "primary-container": "#1d4ed8",
+                        "tertiary": "#004f35",
+                        "surface-bright": "#faf8ff",
+                        "outline": "#747686",
+                        "inverse-on-surface": "#eef0ff",
+                        "secondary-container": "#fd651e",
+                        "surface-dim": "#d2d9f4",
+                        "surface-variant": "#dae2fd",
+                        "on-surface-variant": "#434655",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#006948",
+                        "on-tertiary-fixed": "#002114",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-secondary-container": "#571a00",
+                        "outline-variant": "#c4c5d7",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "32px",
+                        "margin-desktop": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "max-width": "1200px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-bold": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Fira Sans"],
+                        "body-base": ["Inter"],
+                        "display-lg-mobile": ["Fira Sans"],
+                        "headline-md": ["Fira Sans"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-bold": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-base": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            background-color: #1d4ed8;
+            color: white;
+            border-right: 4px solid #EA580C;
+        }
+        .section-anchor {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-md max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md font-extrabold text-primary">UWG Raesfeld-Erle</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-md py-xs" href="#">Home</a>
+<a class="text-primary border-b-[3px] border-primary px-md py-xs" href="#">Program</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-md py-xs" href="#">Team</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-md py-xs" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">search</span>
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</div>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+<!-- Hero Section -->
+<section class="mb-xl">
+<div class="flex flex-col md:flex-row gap-lg items-center">
+<div class="flex-1">
+<span class="font-label-caps text-label-caps text-secondary mb-xs block">WAHLPROGRAMM 2024-2029</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-md">Zukunft gestalten für Raesfeld &amp; Erle</h1>
+<p class="font-body-base text-on-surface-variant max-w-2xl">
+                        Unser Programm basiert auf Transparenz, Bürgernähe und sachorientierter Politik. Wir setzen uns für eine nachhaltige Entwicklung unserer Heimatgemeinde ein, fernab von Ideologien und Parteizwängen.
+                    </p>
+</div>
+<div class="w-full md:w-auto">
+<button class="bg-[#EA580C] text-white font-body-bold px-xl py-md rounded-lg flex items-center gap-md shadow-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">download</span>
+                        Wahlprogramm (PDF)
+                    </button>
+</div>
+</div>
+</section>
+<!-- Main Content Area -->
+<div class="flex flex-col md:flex-row gap-xl">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden md:block w-64 shrink-0 h-fit sticky top-[100px]">
+<div class="bg-surface-container-lowest border border-outline-variant p-sm flex flex-col gap-xs">
+<a class="active-tab flex items-center gap-md p-md font-body-bold hover:bg-surface-container-high transition-all" href="#economy" onclick="setActive(this)">
+<span class="material-symbols-outlined">trending_up</span>
+                        Wirtschaft
+                    </a>
+<a class="flex items-center gap-md p-md font-body-bold text-on-surface-variant hover:bg-surface-container-high transition-all" href="#environment" onclick="setActive(this)">
+<span class="material-symbols-outlined">eco</span>
+                        Umwelt &amp; Klima
+                    </a>
+<a class="flex items-center gap-md p-md font-body-bold text-on-surface-variant hover:bg-surface-container-high transition-all" href="#infrastructure" onclick="setActive(this)">
+<span class="material-symbols-outlined">construction</span>
+                        Infrastruktur
+                    </a>
+<a class="flex items-center gap-md p-md font-body-bold text-on-surface-variant hover:bg-surface-container-high transition-all" href="#education" onclick="setActive(this)">
+<span class="material-symbols-outlined">school</span>
+                        Bildung &amp; Soziales
+                    </a>
+<a class="flex items-center gap-md p-md font-body-bold text-on-surface-variant hover:bg-surface-container-high transition-all" href="#transparency" onclick="setActive(this)">
+<span class="material-symbols-outlined">visibility</span>
+                        Transparenz
+                    </a>
+</div>
+</aside>
+<!-- Topics Content -->
+<div class="flex-1 space-y-xl">
+<!-- Section: Economy -->
+<article class="section-anchor bg-white border border-outline-variant p-xl" id="economy">
+<div class="flex items-center gap-md mb-md">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<h2 class="font-headline-md text-headline-md">Wirtschaft &amp; Lokale Betriebe</h2>
+</div>
+<p class="font-body-base mb-lg text-on-surface-variant">
+                        Ein starker Wirtschaftsstandort ist das Fundament für eine lebenswerte Gemeinde. Wir unterstützen lokale Unternehmen und fördern die Ansiedlung zukunftsorientierter Betriebe.
+                    </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-md bg-surface-container-low border border-outline-variant">
+<h3 class="font-body-bold mb-xs">Gewerbeförderung</h3>
+<ul class="list-disc list-inside space-y-xs font-label-sm text-on-surface-variant">
+<li>Bürokratieabbau für lokale Handwerksbetriebe</li>
+<li>Ausweisung moderner Gewerbeflächen</li>
+<li>Förderung von Co-Working Spaces</li>
+</ul>
+</div>
+<div class="p-md bg-surface-container-low border border-outline-variant">
+<h3 class="font-body-bold mb-xs">Standortmarketing</h3>
+<ul class="list-disc list-inside space-y-xs font-label-sm text-on-surface-variant">
+<li>Stärkung des Tourismus in der Region</li>
+<li>Digitalisierung der Wirtschaftsförderung</li>
+<li>Enge Zusammenarbeit mit den Werbegemeinschaften</li>
+</ul>
+</div>
+</div>
+</article>
+<!-- Section: Environment -->
+<article class="section-anchor bg-white border border-outline-variant p-xl" id="environment">
+<div class="flex items-center gap-md mb-md">
+<span class="material-symbols-outlined text-tertiary text-4xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+<h2 class="font-headline-md text-headline-md text-tertiary">Umwelt, Klima &amp; Landwirtschaft</h2>
+</div>
+<p class="font-body-base mb-lg text-on-surface-variant">
+                        Unsere Heimat bewahren heißt, heute die Weichen für morgen zu stellen. Wir setzen auf pragmatischen Naturschutz und eine faire Partnerschaft mit der Landwirtschaft.
+                    </p>
+<div class="space-y-md">
+<div class="border-l-4 border-tertiary pl-md py-xs">
+<p class="font-body-bold">Nachhaltige Energien vor Ort</p>
+<p class="font-body-base text-on-surface-variant">Förderung von Photovoltaik auf öffentlichen Dächern und Unterstützung bürgergetragener Energieprojekte.</p>
+</div>
+<div class="border-l-4 border-tertiary pl-md py-xs">
+<p class="font-body-bold">Erhalt der Kulturlandschaft</p>
+<p class="font-body-base text-on-surface-variant">Schutz der Biodiversität durch Blühstreifen und Erhalt unserer Waldflächen rund um Raesfeld.</p>
+</div>
+<div class="border-l-4 border-tertiary pl-md py-xs">
+<p class="font-body-bold">Dialog mit Landwirten</p>
+<p class="font-body-base text-on-surface-variant">Regelmäßiger Austausch, um lokale Lösungen für globale Herausforderungen im Agrarsektor zu finden.</p>
+</div>
+</div>
+</article>
+<!-- Section: Infrastructure -->
+<article class="section-anchor bg-white border border-outline-variant p-xl" id="infrastructure">
+<div class="flex items-center gap-md mb-md">
+<span class="material-symbols-outlined text-secondary text-4xl" style="font-variation-settings: 'FILL' 1;">construction</span>
+<h2 class="font-headline-md text-headline-md text-secondary">Infrastruktur &amp; Wohnen</h2>
+</div>
+<img class="w-full h-48 object-cover mb-lg border border-outline-variant" data-alt="A clean, high-angle architectural photograph of a modern residential development in a rural German town, featuring minimalist houses with flat roofs, large windows, and manicured green spaces. The lighting is bright morning sunlight, creating sharp shadows and highlighting the Slate and White color palette. The aesthetic is professional, organized, and tranquil, reflecting reliable municipal planning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgM_nd4w3tloZ5kqIGGeeZojSo4GcRsWiggPWRdK-j9750uDRqewqXsuHQH4eSPOwt07QE6zt1_NE3v7Cbt1adWzc5pfd5nv7V0-SaDv1X2WkqzVkYtFoa2iFMFWLICRajK0C0FqH5G3wEupUpwPbyRVbfS-pMPzMEJoLrMQnMw6KbCnkZUmWEEDu12zYV3ya_mHfJT3L1TNdf8LQZkPd49zt8I6uZBXxpVaG_0xc9oxG2PhKvbn1Wy1HaM0lRWRvGY8XzNp2AWQE"/>
+<p class="font-body-base mb-lg text-on-surface-variant">
+                        Raesfeld und Erle sollen für alle Generationen attraktiv bleiben. Bezahlbarer Wohnraum und eine moderne Verkehrsinfrastruktur stehen ganz oben auf unserer Agenda.
+                    </p>
+<div class="bg-surface-container-highest p-lg">
+<div class="grid grid-cols-1 gap-md">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<div>
+<h4 class="font-body-bold">Bauland für Einheimische</h4>
+<p class="font-label-sm text-on-surface-variant">Wir priorisieren die Vergabe von Grundstücken an junge Familien aus unserer Gemeinde.</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<div>
+<h4 class="font-body-bold">Radwegeausbau</h4>
+<p class="font-label-sm text-on-surface-variant">Sichere Verbindungen zwischen Raesfeld, Erle und Homer sowie zu den Nachbargemeinden.</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<div>
+<h4 class="font-body-bold">ÖPNV-Optimierung</h4>
+<p class="font-label-sm text-on-surface-variant">Bessere Taktung der Busverbindungen nach Borken und Dorsten, besonders für Pendler.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Section: Education -->
+<article class="section-anchor bg-white border border-outline-variant p-xl" id="education">
+<div class="flex items-center gap-md mb-md">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">school</span>
+<h2 class="font-headline-md text-headline-md">Bildung &amp; Soziales</h2>
+</div>
+<p class="font-body-base mb-lg text-on-surface-variant">
+                        Unsere Kinder sind unsere Zukunft. Wir investieren in moderne Schulen und Kindergärten, um jedem Kind den besten Start ins Leben zu ermöglichen.
+                    </p>
+<div class="flex flex-wrap gap-md">
+<span class="px-md py-sm bg-primary-container text-on-primary-fixed rounded-full text-label-sm font-body-bold">Digitale Klassenzimmer</span>
+<span class="px-md py-sm bg-primary-container text-on-primary-fixed rounded-full text-label-sm font-body-bold">Kita-Platz Garantie</span>
+<span class="px-md py-sm bg-primary-container text-on-primary-fixed rounded-full text-label-sm font-body-bold">Seniorenbegegnung</span>
+<span class="px-md py-sm bg-primary-container text-on-primary-fixed rounded-full text-label-sm font-body-bold">Vereinsförderung</span>
+</div>
+</article>
+</div>
+</div>
+<!-- Sticky Mobile Bottom Bar Logic handled by separate component if needed, but here simple CTA -->
+<div class="md:hidden mt-xl">
+<button class="w-full bg-[#EA580C] text-white font-body-bold px-xl py-md rounded-lg flex justify-center items-center gap-md">
+<span class="material-symbols-outlined">download</span>
+                PDF Programm laden
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-high border-t border-outline-variant mt-xl">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-xl gap-md max-w-max-width mx-auto">
+<div class="flex flex-col items-center md:items-start">
+<div class="font-headline-md text-headline-md font-bold text-primary mb-xs">UWG Raesfeld-Erle</div>
+<p class="font-label-sm text-on-surface-variant">© 2024 UWG Raesfeld-Erle. Transparenz &amp; Bürgernähe.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-md">
+<a class="font-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Imprint</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Statutes</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Press</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant h-16 flex justify-around items-center">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary border-t-[3px] border-primary pt-1 scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<span class="font-label-sm text-label-sm">Program</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Team</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-label-sm text-label-sm">Contact</span>
+</a>
+</div>
+<script>
+        function setActive(el) {
+            const tabs = document.querySelectorAll('aside a');
+            tabs.forEach(tab => {
+                tab.classList.remove('active-tab');
+                tab.classList.add('text-on-surface-variant');
+                tab.classList.remove('text-white');
+            });
+            el.classList.add('active-tab');
+            el.classList.remove('text-on-surface-variant');
+        }
+
+        // Simple scroll spy logic
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('article');
+            const navLinks = document.querySelectorAll('aside a');
+            let current = "";
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-tab');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active-tab');
+                }
+            });
+        });
+    </script>
+</body></html>

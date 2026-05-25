@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UWG Raesfeld-Erle | Gemeinsam für unsere Gemeinde</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Fira+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#faf8ff",
+                    "on-primary-fixed": "#001551",
+                    "primary-fixed": "#dce1ff",
+                    "secondary-fixed-dim": "#ffb599",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#76eab6",
+                    "surface-container": "#eaedff",
+                    "surface-container-low": "#f2f3ff",
+                    "on-surface": "#131b2e",
+                    "surface": "#faf8ff",
+                    "secondary": "#a73a00",
+                    "on-secondary-fixed-variant": "#7f2b00",
+                    "tertiary-fixed-dim": "#68dba9",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#0039b5",
+                    "on-primary-container": "#cad3ff",
+                    "surface-tint": "#2151da",
+                    "on-secondary-fixed": "#370e00",
+                    "on-background": "#131b2e",
+                    "surface-container-highest": "#dae2fd",
+                    "tertiary-fixed": "#85f8c4",
+                    "inverse-surface": "#283044",
+                    "surface-container-high": "#e2e7ff",
+                    "primary": "#0037b0",
+                    "secondary-fixed": "#ffdbce",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "inverse-primary": "#b7c4ff",
+                    "primary-container": "#1d4ed8",
+                    "tertiary": "#004f35",
+                    "surface-bright": "#faf8ff",
+                    "outline": "#747686",
+                    "inverse-on-surface": "#eef0ff",
+                    "secondary-container": "#fd651e",
+                    "surface-dim": "#d2d9f4",
+                    "surface-variant": "#dae2fd",
+                    "on-surface-variant": "#434655",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#006948",
+                    "on-tertiary-fixed": "#002114",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "on-secondary-container": "#571a00",
+                    "outline-variant": "#c4c5d7",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xl": "32px",
+                    "margin-desktop": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "max-width": "1200px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-bold": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Fira Sans"],
+                    "body-base": ["Inter"],
+                    "display-lg-mobile": ["Fira Sans"],
+                    "headline-md": ["Fira Sans"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "body-bold": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-base": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .nav-active { border-bottom: 3px solid #0037b0; }
+        body { background-color: #faf8ff; color: #131b2e; }
+        .hero-gradient { background: linear-gradient(to right, rgba(19, 27, 46, 0.9) 30%, rgba(19, 27, 46, 0.4) 100%); }
+        .grid-pattern {
+            background-image: radial-gradient(circle, #0037b010 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .soft-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+        }
+        .layered-card {
+            position: relative;
+        }
+        .layered-card::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: -6px;
+            bottom: -6px;
+            background: #dae2fd;
+            z-index: -1;
+            border-radius: 0.125rem;
+        }
+    </style>
+</head>
+<body class="font-body-base text-body-base grid-pattern">
+<!-- TopAppBar Component -->
+<header class="bg-surface/90 backdrop-blur-md dark:bg-background/90 border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-md max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed flex items-center gap-sm">
+<div class="w-8 h-8 bg-primary rounded-sm flex items-center justify-center text-white text-sm">U</div>
+                UWG Raesfeld-Erle
+            </div>
+<nav class="hidden md:flex gap-xl items-center h-full">
+<a class="font-label-sm text-label-sm text-primary dark:text-primary-fixed border-b-[3px] border-primary dark:border-primary-fixed hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-xs py-base" href="#">Home</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-xs py-base" href="#">Program</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-xs py-base" href="#">Team</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-xs py-base" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="search">search</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="account_circle">account_circle</span>
+<div class="w-px h-6 bg-outline-variant mx-xs"></div>
+<button class="bg-primary text-white text-label-sm px-md py-xs rounded hover:shadow-md transition-shadow">Login</button>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-16 md:pb-0">
+<!-- Hero Section -->
+<section class="relative h-[650px] flex items-center overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A panoramic, high-resolution view of a charming German village square in Raesfeld during a golden hour sunset." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB_OT1t29oKse42os8YGPrU7sz3_sAEppz2p7j2j-5C2Gmky6GSdPAI6YZbc2rLefphWmWT3WIXJZXKKjjWrNmR5C5NZw0kNjlww8_7xq6de31J2S5u3tqu0LkZJHlDUTBUgxu77gVdSWqb_tx4RQNU3tDG1xtRutma5OWHuFcX9mC_kmWSHKZ6bqNvbuHq3FMQy4gymUypAQ3BFgX22fhOJlp2tCWJq6u5otkZE1YHerFsr-bCwctSWJyVB2CxUbpb80-ulVkX24g')"></div>
+<div class="absolute inset-0 hero-gradient"></div>
+<!-- Decorative Background Text -->
+<div class="absolute -bottom-10 -left-10 text-[180px] font-display-lg text-white/[0.03] select-none pointer-events-none uppercase">Raesfeld</div>
+<div class="relative z-10 w-full max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="max-w-2xl">
+<div class="flex items-center gap-xs mb-md">
+<div class="h-px w-8 bg-secondary-fixed"></div>
+<span class="font-label-caps text-label-caps text-secondary-fixed tracking-widest">WIR SIND DIE UWG</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-[40px] md:text-[64px] leading-tight text-white mb-md drop-shadow-lg">
+            Gemeinsam für <br/><span class="text-secondary-fixed">Raesfeld &amp; Erle</span>
+</h1>
+<p class="text-white/90 mb-xl font-body-base text-lg leading-relaxed max-w-xl">
+            Unabhängige Politik von Bürgern für Bürger. Wir setzen uns für Transparenz, Nachhaltigkeit und eine starke Gemeinschaft in unserer Gemeinde ein. 
+        </p>
+<div class="flex flex-col md:flex-row gap-md">
+<button class="bg-secondary text-white font-body-bold px-xl py-md rounded-sm transition-all hover:bg-secondary/90 hover:-translate-y-1 soft-shadow flex items-center gap-sm">
+                Mitmachen &amp; Bewegen
+                <span class="material-symbols-outlined text-sm">trending_flat</span>
+</button>
+<button class="backdrop-blur-sm bg-white/10 border border-white/30 text-white font-body-bold px-xl py-md rounded-sm transition-all hover:bg-white/20">
+                Unser Programm
+            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: News & Key Points -->
+<section class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl relative -mt-16 z-20">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Main News Card (Bento Lg) -->
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant p-lg flex flex-col gap-md soft-shadow layered-card group">
+<div class="overflow-hidden border border-outline-variant relative">
+<img class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Modern bicycle lane in a rural German setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUNwRSkUt3IwDeun8VCmq6zvzX_i4GiRYcFXyF9ZkJhV_Aij6aqHnkkYDI-Wgv5uuDY8A-GxO5cqhnV1LkbU-O1yIElAE81pgIEMJaJJqAyWLfSbml5b2M6J-fcr6up6yPy308gUGquEGFID2IyGRMsCO1O7hHhNqkNPRp8uTrIOEkyvLvMdJZjX2GyM1MLrKHsuz1j711tz2jUIpUdvewu1V2UpqLEOc3fcDWY9vtqkcJMNvqGw_Qr1HwExkJ2_UpAmyBGSuWXnI"/>
+<div class="absolute top-4 left-4 bg-secondary text-white px-md py-xs font-label-caps text-[10px] tracking-widest">AKTUELLES</div>
+</div>
+<div class="flex flex-col gap-sm py-xs">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Kommunalpolitik • 18. Okt 2024</span>
+<h2 class="font-headline-md text-headline-md text-on-surface hover:text-primary transition-colors cursor-pointer">Neuer Antrag zur Radweginfrastruktur eingereicht</h2>
+<p class="text-on-surface-variant font-body-base text-body-base leading-relaxed">
+            Wir fordern den Ausbau des Radweges zwischen Raesfeld und Erle, um die Sicherheit für Schüler und Pendler maßgeblich zu erhöhen. Unser Ziel ist eine lückenlose Vernetzung für eine nachhaltige Mobilität in unserer Region...
+        </p>
+<a class="text-primary font-body-bold text-body-bold flex items-center gap-xs hover:gap-md transition-all mt-sm" href="#">
+            Artikel lesen <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+</a>
+</div>
+</div>
+<!-- Secondary Cards Stack -->
+<div class="md:col-span-4 flex flex-col gap-lg">
+<!-- Events List -->
+<div class="bg-white border border-outline-variant p-lg soft-shadow">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-headline-md text-headline-md">Termine</h3>
+<span class="material-symbols-outlined text-outline-variant">calendar_today</span>
+</div>
+<div class="flex flex-col gap-md">
+<div class="flex gap-md group cursor-pointer">
+<div class="bg-primary-container text-white px-sm py-base text-center min-w-[64px] rounded-sm group-hover:bg-primary transition-colors">
+<div class="font-label-caps text-[10px]">OKT</div>
+<div class="font-headline-md text-[24px]">24</div>
+</div>
+<div class="border-b border-outline-variant/30 pb-md w-full">
+<div class="font-body-bold text-on-surface group-hover:text-primary transition-colors">Ratssitzung</div>
+<div class="font-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">location_on</span> Rathaus, 19:00 Uhr
+</div>
+</div>
+</div>
+<div class="flex gap-md group cursor-pointer">
+<div class="bg-surface-container-highest text-on-surface px-sm py-base text-center min-w-[64px] rounded-sm border border-outline-variant group-hover:border-primary transition-colors">
+<div class="font-label-caps text-[10px]">NOV</div>
+<div class="font-headline-md text-[24px]">02</div>
+</div>
+<div class="w-full">
+<div class="font-body-bold text-on-surface group-hover:text-primary transition-colors">Bürgerstammtisch</div>
+<div class="font-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">location_on</span> Landhaus Erle, 20:00 Uhr
+</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-lg border-b border-primary text-primary font-label-sm text-label-sm py-sm hover:bg-primary/5 transition-colors">Kalender öffnen</button>
+</div>
+<!-- Program Quick Link -->
+<div class="bg-secondary-container text-on-secondary-container p-lg relative overflow-hidden group cursor-pointer border border-outline-variant soft-shadow hover:translate-x-1 transition-transform">
+<div class="absolute -right-4 -bottom-4 text-white/10 group-hover:text-white/20 transition-colors">
+<span class="material-symbols-outlined text-[120px]" data-icon="gavel">gavel</span>
+</div>
+<div class="relative z-10">
+<span class="text-[10px] font-label-caps tracking-widest opacity-80">VISION 2025</span>
+<h3 class="font-headline-md text-headline-md mb-sm mt-xs">Wahlprogramm</h3>
+<p class="font-label-sm text-label-sm opacity-90 mb-md max-w-[200px]">Die Zukunft unserer Gemeinde aktiv mitgestalten.</p>
+<div class="flex items-center gap-xs text-sm font-bold">
+            Mehr erfahren <span class="material-symbols-outlined text-sm">north_east</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Council Motion Tracker (The "Authority" Table) -->
+<section class="bg-surface-container-low py-24 relative overflow-hidden">
+<!-- Decorative Circle -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-end mb-lg gap-md">
+<div>
+<div class="flex items-center gap-xs mb-xs">
+<span class="w-2 h-2 bg-primary rounded-full"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest">TRANSPARENZ</span>
+</div>
+<h2 class="font-headline-md text-[32px] md:text-[40px] leading-tight mt-xs">Aktuelle Anträge im Gemeinderat</h2>
+</div>
+<a class="text-primary font-label-sm text-label-sm hover:underline flex items-center gap-xs" href="#">
+                Vollständiges Archiv <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+<div class="bg-white border border-outline-variant overflow-hidden soft-shadow rounded-sm layered-card">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-on-surface-variant border-b border-outline-variant">
+<th class="p-lg font-label-caps text-label-sm">Datum</th>
+<th class="p-lg font-label-caps text-label-sm">Antragsthema</th>
+<th class="p-lg font-label-caps text-label-sm">Status</th>
+<th class="p-lg font-label-caps text-label-sm hidden md:table-cell text-right">Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-lg font-label-sm text-on-surface-variant">12.10.2024</td>
+<td class="p-lg font-body-bold text-lg">Energetische Sanierung Grundschule</td>
+<td class="p-lg">
+<span class="inline-flex items-center gap-xs bg-amber-50 text-amber-700 text-[10px] px-md py-xs font-bold rounded-full uppercase border border-amber-200">
+<span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span> In Bearbeitung
+                            </span>
+</td>
+<td class="p-lg hidden md:table-cell text-right">
+<button class="p-sm hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant bg-slate-50/30 hover:bg-surface-container-low transition-colors group">
+<td class="p-lg font-label-sm text-on-surface-variant">05.10.2024</td>
+<td class="p-lg font-body-bold text-lg text-primary">Erweiterung Gewerbegebiet Ost</td>
+<td class="p-lg">
+<span class="inline-flex items-center gap-xs bg-green-50 text-green-700 text-[10px] px-md py-xs font-bold rounded-full uppercase border border-green-200">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Genehmigt
+                            </span>
+</td>
+<td class="p-lg hidden md:table-cell text-right">
+<button class="p-sm hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-lg font-label-sm text-on-surface-variant">28.09.2024</td>
+<td class="p-lg font-body-bold text-lg">Tempo 30 Zone am Kirchplatz</td>
+<td class="p-lg">
+<span class="inline-flex items-center gap-xs bg-red-50 text-red-700 text-[10px] px-md py-xs font-bold rounded-full uppercase border border-red-200">
+<span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span> Abgelehnt
+                            </span>
+</td>
+<td class="p-lg hidden md:table-cell text-right">
+<button class="p-sm hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Community Grid -->
+<section class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-24 relative">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 text-[120px] font-display-lg text-primary/[0.02] whitespace-nowrap select-none pointer-events-none uppercase">Unser Team</div>
+<div class="flex flex-col items-center mb-xl text-center">
+<span class="font-label-caps text-label-caps text-secondary mb-xs">DIE KÖPFE</span>
+<h2 class="font-headline-md text-[32px] md:text-[40px]">Für unsere Heimat Raesfeld</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden border border-outline-variant layered-card">
+<img class="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" data-alt="Hans-Dieter Weber" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSR6GXnBPfyTBtiwxHvOhS60WbMwvtevXfnoMim8qcY9lvLM1oMb3ER7z4UzjelMh2ykYWex9LBhwUb5PJp7EDLEt4V_6w87GGUBhr4asyOmj_H5L96XcOZ8ShgXeoijNdlsnUId-khgvz1TGmHsr_d5YYSLzAzba7wXMvZoS-ajMacN_2XuRiUPldxflb9SVJCBkKC7RyEDu9cNBgpa4x8m0A0A66zmjrCyuHhF6czn0HB-2tTw-2oIvGLwVo8gLSDLA7WZbsvNQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-md">
+<span class="text-white text-xs font-label-sm">Profil ansehen →</span>
+</div>
+</div>
+<div class="mt-md">
+<p class="font-body-bold text-on-surface text-lg group-hover:text-primary transition-colors">Hans-Dieter Weber</p>
+<p class="font-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="w-1 h-3 bg-primary/40"></span> Vorsitzender
+</p>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden border border-outline-variant layered-card">
+<img class="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" data-alt="Maria Schmidt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz3QjYPAn2LGIk44hmCizDBlKi0jCzISY6Xs9VkZWWmkALmxnV3-4oOy_f3Xa9XYvHO3CPEMtAfZs_FKkLBEL_rlNSFZR9WlUXskrMI2ftRke5fw2PAdORvDIgrPQTugxtwzQS5ETYQnM8GOMqnR7wdZjOQFU16QoNYuzjOQtNn5OdIZG34l1HEP4LJMqrqmxYXRIOIjiB1X2tiO_RKAx2iRjjHpLh4DZ-K9fjg4gF2T8X3AsOmtAxSYnAuV5sB2Gv2U4LNgGqnu8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-md">
+<span class="text-white text-xs font-label-sm">Profil ansehen →</span>
+</div>
+</div>
+<div class="mt-md">
+<p class="font-body-bold text-on-surface text-lg group-hover:text-primary transition-colors">Maria Schmidt</p>
+<p class="font-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="w-1 h-3 bg-primary/40"></span> Stellv. Vorsitzende
+</p>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden border border-outline-variant layered-card">
+<img class="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" data-alt="Jonas Becker" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxYwCE6IF2P-LzgnlBvSOPioMyFOuT736mL0uwLsiuvo-zC-petQuR76tjqilZ7lleZLo_UIcwY-uwSsDgkiTAjzKpfW_kBexXJ_q_H7By3BTq_gUE2vCgIgPfe4jtCY2pxuaAUsCTjMrjLT-Ai1Ov2cwSpfeb1oSv5tdpoLzTZptA7Vq3nqjn9SwLY3M5N_aRBkbiSFy9HiXRE282dhRZIa_ipDScntr-6eLkm0-4aynVnEZ8ukywWCfotS-R63mD6GuKcfB9zIQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-md">
+<span class="text-white text-xs font-label-sm">Profil ansehen →</span>
+</div>
+</div>
+<div class="mt-md">
+<p class="font-body-bold text-on-surface text-lg group-hover:text-primary transition-colors">Jonas Becker</p>
+<p class="font-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="w-1 h-3 bg-primary/40"></span> Beisitzer
+</p>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden border border-outline-variant layered-card">
+<img class="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" data-alt="Petra Müller" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbOEKIvoIFuvO5jhLdnpdEL5M6UW0LX1_Tx_QVfNV3adipefEqqvSozTevnu4qAG76S4rWbajqgqnEwamfkJ_xAleB_bZplOEo6SomBy3JP2GxwZazdxc1QLjY7ByKRqU_PLPGOByXvWW5XVqx9ofbbBl67l0wDLT54X64fLstRHmW1v4L-oE-aWUObGA1pZuOOHORjQcql_5sQ1Mq4h79BSXqZzDd7oig6V9F6XvVvvmbeAOF-03fyimrBMuSdtBedRoqXANRV4Y"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-md">
+<span class="text-white text-xs font-label-sm">Profil ansehen →</span>
+</div>
+</div>
+<div class="mt-md">
+<p class="font-body-bold text-on-surface text-lg group-hover:text-primary transition-colors">Petra Müller</p>
+<p class="font-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="w-1 h-3 bg-primary/40"></span> Schatzmeisterin
+</p>
+</div>
+</div>
+</div>
+<div class="mt-xl text-center">
+<button class="border border-outline text-on-surface-variant px-xl py-sm hover:bg-surface-container transition-colors rounded-sm">Alle Mitglieder anzeigen</button>
+</div>
+</section>
+<!-- Newsletter / CTA Section -->
+<section class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop mb-24">
+<div class="bg-primary p-xl md:p-24 relative overflow-hidden rounded-sm soft-shadow">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-white/5 skew-x-12 translate-x-1/2"></div>
+<div class="relative z-10 max-w-xl">
+<h2 class="font-display-lg text-white mb-md">Auf dem Laufenden bleiben</h2>
+<p class="text-white/80 mb-xl text-lg">Melden Sie sich für unseren Newsletter an und erhalten Sie aktuelle Informationen direkt aus dem Gemeinderat.</p>
+<form class="flex flex-col md:flex-row gap-sm">
+<input class="flex-grow px-lg py-md rounded-sm border-none focus:ring-2 focus:ring-secondary" placeholder="E-Mail Adresse" type="email"/>
+<button class="bg-secondary text-white font-body-bold px-xl py-md rounded-sm hover:brightness-110 transition-all">Abonnieren</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-inverse-surface text-white border-t border-white/10">
+<div class="flex flex-col md:flex-row justify-between items-start w-full px-margin-mobile md:px-margin-desktop py-24 gap-xl max-w-max-width mx-auto">
+<div class="max-w-xs">
+<div class="font-headline-md text-headline-md font-bold text-primary-fixed mb-md">UWG Raesfeld-Erle</div>
+<p class="font-body-base text-body-base text-white/60 mb-lg">Ihre unabhängige Wählergemeinschaft für eine starke und transparente Kommunalpolitik in unserer Region.</p>
+<div class="flex gap-md">
+<div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">campaign</span>
+</div>
+<div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-xl">
+<div>
+<h4 class="font-label-caps text-white mb-lg">Navigation</h4>
+<ul class="flex flex-col gap-sm">
+<li><a class="text-white/60 hover:text-white transition-colors" href="#">Home</a></li>
+<li><a class="text-white/60 hover:text-white transition-colors" href="#">Programm</a></li>
+<li><a class="text-white/60 hover:text-white transition-colors" href="#">Team</a></li>
+<li><a class="text-white/60 hover:text-white transition-colors" href="#">Termine</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps text-white mb-lg">Rechtliches</h4>
+<ul class="flex flex-col gap-sm">
+<li><a class="text-white/60 hover:text-white transition-colors" href="#">Impressum</a></li>
+<li><a class="text-white/60 hover:text-white transition-colors" href="#">Datenschutz</a></li>
+<li><a class="text-white/60 hover:text-white transition-colors" href="#">Satzung</a></li>
+<li><a class="text-white/60 hover:text-white transition-colors" href="#">Presse</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="border-t border-white/10 py-lg">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="font-label-sm text-white/40">© 2024 UWG Raesfeld-Erle. Mit Leidenschaft für unsere Gemeinde.</p>
+<p class="font-label-sm text-white/40">Zuletzt aktualisiert: 18. Oktober 2024</p>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar for Mobile -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface/95 backdrop-blur-md border-t border-outline-variant h-20 flex justify-around items-center px-sm">
+<a class="flex flex-col items-center justify-center text-primary group" href="#">
+<div class="p-xs bg-primary/10 rounded-sm mb-1 group-active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+</div>
+<span class="font-label-sm text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="gavel">gavel</span>
+<span class="font-label-sm text-[10px]">Programm</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="groups">groups</span>
+<span class="font-label-sm text-[10px]">Team</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="campaign">campaign</span>
+<span class="font-label-sm text-[10px]">Kontakt</span>
+</a>
+</nav>
+<!-- FAB -->
+<button class="fixed bottom-24 md:bottom-12 right-margin-mobile md:right-margin-desktop bg-secondary text-white p-lg rounded-sm shadow-2xl hover:shadow-primary/30 transition-all z-40 flex items-center justify-center group hover:-translate-y-1">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+<span class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-md transition-all duration-500 font-body-bold whitespace-nowrap">Themen einreichen</span>
+</button>
+<script>
+    // Micro-interactions for cards
+    document.querySelectorAll('.group').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            if (!card.classList.contains('cursor-pointer')) return;
+            // Additional interactions can be added here
+        });
+    });
+
+    // Reveal animations on scroll
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100');
+                entry.target.classList.remove('translate-y-10');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('transition-all', 'duration-1000', 'translate-y-10', 'opacity-0');
+        observer.observe(section);
+    });
+    
+    // Header shadow on scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 20) {
+            header.classList.add('shadow-md');
+        } else {
+            header.classList.remove('shadow-md');
+        }
+    });
+</script>
+</body></html>

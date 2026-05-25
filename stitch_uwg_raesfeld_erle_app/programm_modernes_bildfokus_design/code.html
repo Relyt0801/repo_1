@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#0037b0",
+                        "on-secondary-fixed": "#370e00",
+                        "surface-container-highest": "#dae2fd",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#fd651e",
+                        "on-primary-fixed": "#001551",
+                        "surface-tint": "#2151da",
+                        "surface-container": "#eaedff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-tertiary-container": "#76eab6",
+                        "outline": "#747686",
+                        "tertiary-fixed": "#85f8c4",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "inverse-surface": "#283044",
+                        "on-surface": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#7f2b00",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#b7c4ff",
+                        "on-secondary-container": "#571a00",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d2d9f4",
+                        "inverse-on-surface": "#eef0ff",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#004f35",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "secondary-fixed-dim": "#ffb599",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "on-tertiary-fixed": "#002114",
+                        "primary-fixed": "#dce1ff",
+                        "primary-container": "#1d4ed8",
+                        "on-primary-container": "#cad3ff",
+                        "background": "#faf8ff",
+                        "on-background": "#131b2e",
+                        "secondary-fixed": "#ffdbce",
+                        "outline-variant": "#c4c5d7",
+                        "surface-container-high": "#e2e7ff",
+                        "surface-bright": "#faf8ff",
+                        "surface": "#faf8ff",
+                        "secondary": "#a73a00",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "surface-container-low": "#f2f3ff",
+                        "tertiary-container": "#006948",
+                        "surface-variant": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "md": "16px",
+                        "max-width": "1200px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Fira Sans"],
+                        "label-caps": ["Inter"],
+                        "display-lg-mobile": ["Fira Sans"],
+                        "body-bold": ["Inter"],
+                        "display-lg": ["Fira Sans"],
+                        "body-base": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-bold": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-base": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .program-card-hover:hover .card-image {
+            transform: scale(1.05);
+        }
+        .program-card-hover:hover .card-overlay {
+            background-color: rgba(0, 55, 176, 0.4);
+        }
+        .text-shadow-strong {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .grainy-texture {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base selection:bg-primary selection:text-white">
+<!-- TopAppBar -->
+<header class="bg-surface/95 backdrop-blur-md border-b border-outline-variant sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-md max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">UWG Raesfeld-Erle</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors px-md py-xs font-body-bold" href="#">Home</a>
+<a class="text-primary relative px-md py-xs font-body-bold" href="#">
+                    Program
+                    <span class="absolute bottom-0 left-md right-md h-[3px] bg-primary rounded-full"></span>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors px-md py-xs font-body-bold" href="#">Team</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors px-md py-xs font-body-bold" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors"><span class="material-symbols-outlined text-primary">search</span></button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors"><span class="material-symbols-outlined text-primary">account_circle</span></button>
+</div>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+<!-- Hero Section -->
+<section class="mb-xl relative overflow-hidden rounded-xl bg-white border border-outline-variant p-lg md:p-xl shadow-sm">
+<div class="absolute inset-0 grainy-texture pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row gap-lg items-start lg:items-center relative z-10">
+<div class="flex-1">
+<span class="font-label-caps text-label-caps text-on-primary bg-primary px-3 py-1 rounded-sm mb-xs block w-fit">WAHLPROGRAMM 2024-2029</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-md leading-tight text-on-surface">
+                        Zukunft gestalten für <br class="hidden md:block"/><span class="text-primary italic">Raesfeld &amp; Erle</span>
+</h1>
+<p class="font-body-base text-on-surface-variant max-w-2xl text-lg border-l-4 border-primary/20 pl-4">
+                        Unser Programm basiert auf Transparenz, Bürgernähe und sachorientierter Politik. Wir setzen uns für eine nachhaltige Entwicklung unserer Heimatgemeinde ein, fernab von Ideologien und Parteizwängen.
+                    </p>
+</div>
+<div class="w-full lg:w-auto">
+<button class="w-full lg:w-auto bg-[#EA580C] text-white font-body-bold px-xl py-md rounded-lg flex items-center justify-center gap-md shadow-lg shadow-orange-500/20 hover:bg-[#D44A00] transition-all">
+<span class="material-symbols-outlined">download</span>
+                        Programm (PDF) laden
+                    </button>
+</div>
+</div>
+</section>
+<!-- Program Grid Area -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg lg:gap-xl">
+<!-- Card: Economy -->
+<div class="program-card-hover relative group overflow-hidden rounded-xl bg-white shadow-md border border-outline-variant h-[450px] flex flex-col">
+<div class="absolute inset-0 z-0">
+<img alt="Economy" class="card-image w-full h-full object-cover transition-transform duration-700 brightness-[0.85] contrast-[1.1]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKSZDyLw5xUAkfyHH7GZ2vQJ5ZhW7rJU6oMyp_1rvnKST3Bd6cIa5Fse5S6LbXF3CkGWaUzm9Kw6yLoQ4SbxaB7mYJHAUCAtzBnFqMlq4hBOpROsAotIJ6SY2JMULownSMyfhP5Jt5iKxohQ6_kwK95zUMe8t2MkJ2kbKn5qeFcI58FG1Xi_VGATkvYCUvc_GiwgPemwt9jZBHSMCIhRk3grVTCa6FlH0iP0XyhALH1gNnhfdD6bX59BQlHRuzUAX1040wwdGnjHM"/>
+<div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-colors duration-500"></div>
+</div>
+<div class="relative z-10 mt-auto p-lg text-white">
+<span class="material-symbols-outlined mb-sm text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<h2 class="font-display-lg text-headline-md md:text-headline-md mb-xs text-shadow-strong uppercase tracking-wide">Wirtschaft &amp; Betriebe</h2>
+<p class="font-body-base text-sm opacity-90 mb-lg max-w-sm">Stärkung lokaler Handwerksbetriebe, Gewerbeförderung und digitaler Fortschritt.</p>
+<a class="inline-flex items-center gap-sm bg-white text-primary font-body-bold px-lg py-sm rounded-lg hover:bg-primary-fixed transition-colors" href="#economy">
+                        Mehr erfahren
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card: Environment -->
+<div class="program-card-hover relative group overflow-hidden rounded-xl bg-white shadow-md border border-outline-variant h-[450px] flex flex-col">
+<div class="absolute inset-0 z-0">
+<img alt="Environment" class="card-image w-full h-full object-cover transition-transform duration-700 brightness-[0.85] contrast-[1.1]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKSZDyLw5xUAkfyHH7GZ2vQJ5ZhW7rJU6oMyp_1rvnKST3Bd6cIa5Fse5S6LbXF3CkGWaUzm9Kw6yLoQ4SbxaB7mYJHAUCAtzBnFqMlq4hBOpROsAotIJ6SY2JMULownSMyfhP5Jt5iKxohQ6_kwK95zUMe8t2MkJ2kbKn5qeFcI58FG1Xi_VGATkvYCUvc_GiwgPemwt9jZBHSMCIhRk3grVTCa6FlH0iP0XyhALH1gNnhfdD6bX59BQlHRuzUAX1040wwdGnjHM"/>
+<div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-colors duration-500"></div>
+</div>
+<div class="relative z-10 mt-auto p-lg text-white">
+<span class="material-symbols-outlined mb-sm text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">eco</span>
+<h2 class="font-display-lg text-headline-md md:text-headline-md mb-xs text-shadow-strong uppercase tracking-wide">Umwelt &amp; Natur</h2>
+<p class="font-body-base text-sm opacity-90 mb-lg max-w-sm">Pragmatischer Naturschutz, nachhaltige Energie und Erhalt unserer Kulturlandschaft.</p>
+<a class="inline-flex items-center gap-sm bg-white text-tertiary font-body-bold px-lg py-sm rounded-lg hover:bg-tertiary-fixed transition-colors" href="#environment">
+                        Mehr erfahren
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card: Infrastructure -->
+<div class="program-card-hover relative group overflow-hidden rounded-xl bg-white shadow-md border border-outline-variant h-[450px] flex flex-col">
+<div class="absolute inset-0 z-0">
+<img alt="Infrastructure" class="card-image w-full h-full object-cover transition-transform duration-700 brightness-[0.85] contrast-[1.1]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgM_nd4w3tloZ5kqIGGeeZojSo4GcRsWiggPWRdK-j9750uDRqewqXsuHQH4eSPOwt07QE6zt1_NE3v7Cbt1adWzc5pfd5nv7V0-SaDv1X2WkqzVkYtFoa2iFMFWLICRajK0C0FqH5G3wEupUpwPbyRVbfS-pMPzMEJoLrMQnMw6KbCnkZUmWEEDu12zYV3ya_mHfJT3L1TNdf8LQZkPd49zt8I6uZBXxpVaG_0xc9oxG2PhKvbn1Wy1HaM0lRWRvGY8XzNp2AWQE"/>
+<div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-colors duration-500"></div>
+</div>
+<div class="relative z-10 mt-auto p-lg text-white">
+<span class="material-symbols-outlined mb-sm text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">construction</span>
+<h2 class="font-display-lg text-headline-md md:text-headline-md mb-xs text-shadow-strong uppercase tracking-wide">Wohnen &amp; Verkehr</h2>
+<p class="font-body-base text-sm opacity-90 mb-lg max-w-sm">Bezahlbarer Wohnraum für Einheimische und Ausbau der Radwegeinfrastruktur.</p>
+<a class="inline-flex items-center gap-sm bg-white text-secondary font-body-bold px-lg py-sm rounded-lg hover:bg-secondary-fixed transition-colors" href="#infrastructure">
+                        Mehr erfahren
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card: Education -->
+<div class="program-card-hover relative group overflow-hidden rounded-xl bg-white shadow-md border border-outline-variant h-[450px] flex flex-col">
+<div class="absolute inset-0 z-0">
+<img alt="Education" class="card-image w-full h-full object-cover transition-transform duration-700 brightness-[0.85] contrast-[1.1]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKSZDyLw5xUAkfyHH7GZ2vQJ5ZhW7rJU6oMyp_1rvnKST3Bd6cIa5Fse5S6LbXF3CkGWaUzm9Kw6yLoQ4SbxaB7mYJHAUCAtzBnFqMlq4hBOpROsAotIJ6SY2JMULownSMyfhP5Jt5iKxohQ6_kwK95zUMe8t2MkJ2kbKn5qeFcI58FG1Xi_VGATkvYCUvc_GiwgPemwt9jZBHSMCIhRk3grVTCa6FlH0iP0XyhALH1gNnhfdD6bX59BQlHRuzUAX1040wwdGnjHM"/>
+<div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-colors duration-500"></div>
+</div>
+<div class="relative z-10 mt-auto p-lg text-white">
+<span class="material-symbols-outlined mb-sm text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">school</span>
+<h2 class="font-display-lg text-headline-md md:text-headline-md mb-xs text-shadow-strong uppercase tracking-wide">Bildung &amp; Soziales</h2>
+<p class="font-body-base text-sm opacity-90 mb-lg max-w-sm">Moderne Schulen, Kita-Garantie und starke Förderung des Vereinslebens.</p>
+<a class="inline-flex items-center gap-sm bg-white text-primary font-body-bold px-lg py-sm rounded-lg hover:bg-primary-fixed transition-colors" href="#education">
+                        Mehr erfahren
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Mobile CTA -->
+<div class="md:hidden mt-xl sticky bottom-20 z-40">
+<button class="w-full bg-[#EA580C] text-white font-body-bold px-xl py-md rounded-lg flex justify-center items-center gap-md shadow-lg shadow-orange-500/40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">download</span>
+                PDF Programm laden
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-high border-t border-outline-variant mt-xl pb-24 md:pb-0">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-xl gap-md max-w-max-width mx-auto">
+<div class="flex flex-col items-center md:items-start">
+<div class="font-headline-md text-headline-md font-bold text-primary mb-xs tracking-tight">UWG Raesfeld-Erle</div>
+<p class="font-label-sm text-on-surface-variant opacity-75">© 2024 UWG Raesfeld-Erle. Transparenz &amp; Bürgernähe.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-md">
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-all font-body-bold" href="#">Imprint</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-all font-body-bold" href="#">Privacy Policy</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-all font-body-bold" href="#">Statutes</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-all font-body-bold" href="#">Press</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 w-full z-50 bg-white/95 backdrop-blur-md border-t border-outline-variant h-20 flex justify-around items-center px-4">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-[10px] uppercase font-bold mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary" href="#">
+<div class="relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-secondary rounded-full"></span>
+</div>
+<span class="font-label-sm text-[10px] uppercase font-bold mt-1">Program</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-[10px] uppercase font-bold mt-1">Team</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-label-sm text-[10px] uppercase font-bold mt-1">Contact</span>
+</a>
+</div>
+<script>
+        // Smooth scroll for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body></html>
