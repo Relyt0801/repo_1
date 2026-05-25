@@ -1,0 +1,40 @@
+/* Stitch Studio — custom styles atop Tailwind */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Stronger, on-brand focus ring */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid #F97316;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Smoother heading rendering */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Subtle entrance for sections in viewport */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stitch Studio – Design schneller. Versende mutiger. Die KI-gestützte Plattform für moderne Produkt-Teams." />
+  <title>Stitch Studio — Design schneller. Versende mutiger.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50:  '#F0F9FF',
+              100: '#E0F2FE',
+              200: '#BAE6FD',
+              300: '#7DD3FC',
+              400: '#38BDF8',
+              500: '#0EA5E9',
+              600: '#0284C7',
+              700: '#0369A1',
+              900: '#0C4A6E',
+            },
+            cta: {
+              500: '#F97316',
+              600: '#EA580C',
+            },
+          },
+          boxShadow: {
+            soft: '0 10px 40px -10px rgba(2, 132, 199, 0.20)',
+            glow: '0 20px 60px -20px rgba(249, 115, 22, 0.45)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="font-sans bg-brand-50 text-brand-900 antialiased">
+
+  <!-- Skip link for a11y -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:text-brand-900 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-soft">
+    Zum Inhalt springen
+  </a>
+
+  <!-- Floating Navbar -->
+  <header class="fixed top-4 left-4 right-4 z-40">
+    <nav aria-label="Hauptnavigation" class="mx-auto max-w-6xl rounded-2xl bg-white/80 backdrop-blur-md border border-brand-100 shadow-soft">
+      <div class="flex items-center justify-between px-5 py-3">
+        <a href="#" class="flex items-center gap-2 group" aria-label="Stitch Studio Startseite">
+          <span class="grid place-items-center w-9 h-9 rounded-xl bg-brand-500 text-white shadow-soft transition-colors duration-200 group-hover:bg-brand-600">
+            <!-- Logo: needle / stitch icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true">
+              <path d="M4 20 20 4"/>
+              <path d="M14 4h6v6"/>
+              <path d="M10 20H4v-6"/>
+            </svg>
+          </span>
+          <span class="font-display font-bold text-lg tracking-tight">Stitch Studio</span>
+        </a>
+
+        <ul class="hidden md:flex items-center gap-7 text-sm font-medium">
+          <li><a href="#features" class="hover:text-brand-600 transition-colors duration-200">Features</a></li>
+          <li><a href="#showcase" class="hover:text-brand-600 transition-colors duration-200">Showcase</a></li>
+          <li><a href="#testimonials" class="hover:text-brand-600 transition-colors duration-200">Stimmen</a></li>
+          <li><a href="#pricing" class="hover:text-brand-600 transition-colors duration-200">Preise</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <a href="#" class="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium rounded-xl hover:bg-brand-50 transition-colors duration-200 cursor-pointer">
+            Login
+          </a>
+          <a href="#cta" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-xl bg-cta-500 text-white hover:bg-cta-600 shadow-glow transition-colors duration-200 cursor-pointer">
+            Kostenlos starten
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+          <button id="menu-toggle" class="md:hidden grid place-items-center w-10 h-10 rounded-xl hover:bg-brand-50 transition-colors duration-200 cursor-pointer" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true">
+              <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden border-t border-brand-100 px-5 py-4">
+        <ul class="flex flex-col gap-3 text-sm font-medium">
+          <li><a href="#features" class="block py-2 hover:text-brand-600">Features</a></li>
+          <li><a href="#showcase" class="block py-2 hover:text-brand-600">Showcase</a></li>
+          <li><a href="#testimonials" class="block py-2 hover:text-brand-600">Stimmen</a></li>
+          <li><a href="#pricing" class="block py-2 hover:text-brand-600">Preise</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="pt-28">
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden">
+      <!-- Gradient background -->
+      <div aria-hidden="true" class="absolute inset-0 -z-10">
+        <div class="absolute -top-32 -left-20 w-[40rem] h-[40rem] rounded-full bg-brand-200/50 blur-3xl"></div>
+        <div class="absolute -top-10 right-0 w-[30rem] h-[30rem] rounded-full bg-cta-500/10 blur-3xl"></div>
+      </div>
+
+      <div class="mx-auto max-w-6xl px-6 pt-12 pb-24 text-center">
+        <a href="#features" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-brand-100 text-xs font-medium text-brand-700 shadow-soft hover:border-brand-300 transition-colors duration-200 cursor-pointer">
+          <span class="grid place-items-center w-4 h-4 rounded-full bg-cta-500 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-2.5 h-2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          Neu: KI-Komponenten-Generator
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </a>
+
+        <h1 class="mt-6 font-display font-bold tracking-tight text-5xl sm:text-6xl lg:text-7xl leading-[1.05]">
+          Design schneller.<br/>
+          <span class="bg-gradient-to-r from-brand-600 via-brand-500 to-cta-500 bg-clip-text text-transparent">Versende mutiger.</span>
+        </h1>
+        <p class="mt-6 mx-auto max-w-2xl text-lg text-brand-900/70">
+          Stitch Studio verwandelt deine Ideen in produktionsfertige Interfaces — vom ersten Prompt
+          bis zum live deployten Frontend in Minuten statt Wochen.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="#cta" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-cta-500 text-white font-semibold shadow-glow hover:bg-cta-600 transition-colors duration-200 cursor-pointer">
+            14 Tage kostenlos testen
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#showcase" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white border border-brand-100 text-brand-900 font-semibold hover:border-brand-300 transition-colors duration-200 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+            Demo ansehen
+          </a>
+        </div>
+
+        <p class="mt-5 text-sm text-brand-900/60">
+          Keine Kreditkarte • In 60 Sekunden startklar • DSGVO-konform
+        </p>
+
+        <!-- Hero Mockup -->
+        <div class="mt-14 mx-auto max-w-5xl">
+          <div class="rounded-2xl border border-brand-100 bg-white/80 backdrop-blur-md shadow-soft overflow-hidden">
+            <div class="flex items-center gap-2 px-4 py-3 border-b border-brand-100 bg-brand-50/60">
+              <span class="w-3 h-3 rounded-full bg-red-400"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+              <span class="w-3 h-3 rounded-full bg-green-400"></span>
+              <span class="ml-3 text-xs text-brand-900/60 font-mono">stitch.studio/canvas</span>
+            </div>
+            <div class="grid grid-cols-12 gap-0">
+              <aside class="col-span-12 sm:col-span-3 border-r border-brand-100 bg-white p-4 space-y-2 text-xs">
+                <div class="font-display font-semibold text-brand-900/80 mb-3">Komponenten</div>
+                <div class="px-3 py-2 rounded-lg bg-brand-50 text-brand-700 font-medium">Hero</div>
+                <div class="px-3 py-2 rounded-lg hover:bg-brand-50 text-brand-900/70">Navbar</div>
+                <div class="px-3 py-2 rounded-lg hover:bg-brand-50 text-brand-900/70">Feature Grid</div>
+                <div class="px-3 py-2 rounded-lg hover:bg-brand-50 text-brand-900/70">Pricing</div>
+                <div class="px-3 py-2 rounded-lg hover:bg-brand-50 text-brand-900/70">Testimonials</div>
+              </aside>
+              <div class="col-span-12 sm:col-span-9 p-6 bg-gradient-to-br from-brand-50 to-white">
+                <div class="rounded-xl bg-white border border-brand-100 p-6 shadow-soft">
+                  <div class="h-3 w-24 bg-brand-200 rounded-full mb-3"></div>
+                  <div class="h-6 w-3/4 bg-brand-900/80 rounded-lg mb-2"></div>
+                  <div class="h-6 w-1/2 bg-gradient-to-r from-brand-500 to-cta-500 rounded-lg mb-4"></div>
+                  <div class="h-2 w-full bg-brand-100 rounded-full mb-2"></div>
+                  <div class="h-2 w-5/6 bg-brand-100 rounded-full mb-4"></div>
+                  <div class="flex gap-2">
+                    <div class="h-9 w-32 bg-cta-500 rounded-lg"></div>
+                    <div class="h-9 w-28 bg-white border border-brand-200 rounded-lg"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGO BAR / Social proof -->
+    <section aria-label="Vertraut von" class="border-y border-brand-100 bg-white/60">
+      <div class="mx-auto max-w-6xl px-6 py-10">
+        <p class="text-center text-xs uppercase tracking-widest font-semibold text-brand-900/50 mb-6">
+          Vertraut von Teams bei
+        </p>
+        <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center text-brand-900/40">
+          <li class="font-display font-bold text-xl tracking-tight">Northwind</li>
+          <li class="font-display font-bold text-xl tracking-tight">Lumen.io</li>
+          <li class="font-display font-bold text-xl tracking-tight">Pixelforge</li>
+          <li class="font-display font-bold text-xl tracking-tight">Helix Labs</li>
+          <li class="font-display font-bold text-xl tracking-tight">Tessera</li>
+          <li class="font-display font-bold text-xl tracking-tight">Volta</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- BENTO FEATURES -->
+    <section id="features" class="py-24">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-2xl">
+          <span class="text-xs uppercase tracking-widest font-semibold text-brand-600">Features</span>
+          <h2 class="mt-2 font-display font-bold text-4xl sm:text-5xl tracking-tight">
+            Alles, was dein Team für schnellen Versand braucht
+          </h2>
+          <p class="mt-4 text-brand-900/70 text-lg">
+            Vom ersten Wireframe bis zum produktionsfertigen Code — alle Schritte in einem
+            zusammenhängenden Workflow.
+          </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Card 1: large -->
+          <article class="md:col-span-2 md:row-span-2 group rounded-2xl bg-white border border-brand-100 p-8 shadow-soft hover:border-brand-300 transition-colors duration-200">
+            <div class="inline-grid place-items-center w-11 h-11 rounded-xl bg-brand-100 text-brand-600 mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true">
+                <path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-2xl">KI-Komponenten-Generator</h3>
+            <p class="mt-2 text-brand-900/70">Beschreibe was du brauchst — Stitch generiert produktionsreife Komponenten in deinem Design-System.</p>
+            <div class="mt-6 rounded-xl bg-brand-50 border border-brand-100 p-4 font-mono text-sm">
+              <span class="text-brand-600">prompt&gt;</span> <span class="text-brand-900/80">Erstelle eine Pricing-Tabelle mit 3 Tiers, Toggle für Jahr/Monat</span>
+              <div class="mt-3 flex gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse" style="animation-delay: .2s"></span>
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse" style="animation-delay: .4s"></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="rounded-2xl bg-white border border-brand-100 p-6 shadow-soft hover:border-brand-300 transition-colors duration-200">
+            <div class="inline-grid place-items-center w-11 h-11 rounded-xl bg-cta-500/10 text-cta-600 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true">
+                <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-lg">Blitzschnelles Preview</h3>
+            <p class="mt-2 text-sm text-brand-900/70">Änderungen sofort live — kein Reload, kein Build.</p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="rounded-2xl bg-white border border-brand-100 p-6 shadow-soft hover:border-brand-300 transition-colors duration-200">
+            <div class="inline-grid place-items-center w-11 h-11 rounded-xl bg-brand-100 text-brand-600 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true">
+                <circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-lg">Team-Workspaces</h3>
+            <p class="mt-2 text-sm text-brand-900/70">Echtzeit-Kollaboration mit Rollen & Kommentaren.</p>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="rounded-2xl bg-white border border-brand-100 p-6 shadow-soft hover:border-brand-300 transition-colors duration-200">
+            <div class="inline-grid place-items-center w-11 h-11 rounded-xl bg-brand-100 text-brand-600 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-lg">Sauberer Code-Export</h3>
+            <p class="mt-2 text-sm text-brand-900/70">React, Vue, Svelte oder reines HTML/Tailwind.</p>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="rounded-2xl bg-white border border-brand-100 p-6 shadow-soft hover:border-brand-300 transition-colors duration-200">
+            <div class="inline-grid place-items-center w-11 h-11 rounded-xl bg-cta-500/10 text-cta-600 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-lg">A11y by Default</h3>
+            <p class="mt-2 text-sm text-brand-900/70">WCAG-AA-konform out of the box. Inkl. Audit-Report.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOWCASE / Stats -->
+    <section id="showcase" class="py-20 bg-gradient-to-br from-brand-900 to-brand-700 text-white">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span class="text-xs uppercase tracking-widest font-semibold text-brand-200">Im Einsatz</span>
+            <h2 class="mt-2 font-display font-bold text-4xl sm:text-5xl tracking-tight">
+              Messbar mehr Velocity.<br/>
+              Weniger Designer-Engpass.
+            </h2>
+            <p class="mt-4 text-brand-100/80 text-lg">
+              Über 12.000 Teams nutzen Stitch Studio, um schneller von Idee zu Produktion zu kommen.
+            </p>
+            <a href="#cta" class="mt-8 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cta-500 text-white font-semibold shadow-glow hover:bg-cta-600 transition-colors duration-200 cursor-pointer">
+              Kostenlos starten
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+          <dl class="grid grid-cols-2 gap-5">
+            <div class="rounded-2xl bg-white/10 backdrop-blur border border-white/15 p-6">
+              <dt class="text-sm text-brand-200">Schneller versandt</dt>
+              <dd class="mt-2 font-display font-bold text-4xl" data-counter="6">6×</dd>
+            </div>
+            <div class="rounded-2xl bg-white/10 backdrop-blur border border-white/15 p-6">
+              <dt class="text-sm text-brand-200">Komponenten</dt>
+              <dd class="mt-2 font-display font-bold text-4xl" data-counter="2400">2.400+</dd>
+            </div>
+            <div class="rounded-2xl bg-white/10 backdrop-blur border border-white/15 p-6">
+              <dt class="text-sm text-brand-200">Aktive Teams</dt>
+              <dd class="mt-2 font-display font-bold text-4xl" data-counter="12000">12.000</dd>
+            </div>
+            <div class="rounded-2xl bg-white/10 backdrop-blur border border-white/15 p-6">
+              <dt class="text-sm text-brand-200">Uptime</dt>
+              <dd class="mt-2 font-display font-bold text-4xl">99,99%</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-24">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-2xl">
+          <span class="text-xs uppercase tracking-widest font-semibold text-brand-600">Stimmen</span>
+          <h2 class="mt-2 font-display font-bold text-4xl sm:text-5xl tracking-tight">
+            Geliebt von Designern & Engineers
+          </h2>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-3 gap-5">
+          <figure class="rounded-2xl bg-white border border-brand-100 p-6 shadow-soft">
+            <div class="flex gap-1 text-cta-500 mb-3" aria-label="5 von 5 Sternen">
+              <!-- 5 stars -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+            </div>
+            <blockquote class="text-brand-900/80">„Wir haben unseren Design-to-Code-Loop von Tagen auf Stunden reduziert. Stitch fühlt sich an wie ein zweites Team-Mitglied."</blockquote>
+            <figcaption class="mt-5 flex items-center gap-3">
+              <span class="grid place-items-center w-10 h-10 rounded-full bg-brand-100 text-brand-700 font-semibold">LM</span>
+              <div>
+                <div class="font-semibold text-sm">Lena Mertens</div>
+                <div class="text-xs text-brand-900/60">Head of Product, Northwind</div>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="rounded-2xl bg-white border border-brand-100 p-6 shadow-soft">
+            <div class="flex gap-1 text-cta-500 mb-3" aria-label="5 von 5 Sternen">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+            </div>
+            <blockquote class="text-brand-900/80">„Der exportierte Code ist erstaunlich sauber. Kein Refactoring nötig — wir versenden direkt aus Stitch in Produktion."</blockquote>
+            <figcaption class="mt-5 flex items-center gap-3">
+              <span class="grid place-items-center w-10 h-10 rounded-full bg-brand-100 text-brand-700 font-semibold">JS</span>
+              <div>
+                <div class="font-semibold text-sm">Jonas Schmid</div>
+                <div class="text-xs text-brand-900/60">Staff Engineer, Lumen.io</div>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="rounded-2xl bg-white border border-brand-100 p-6 shadow-soft">
+            <div class="flex gap-1 text-cta-500 mb-3" aria-label="5 von 5 Sternen">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848 1.416 8.26L12 19.771l-7.416 4.085L6 15.596 0 9.748l8.332-1.73z"/></svg>
+            </div>
+            <blockquote class="text-brand-900/80">„Endlich ein Tool, das Designer & Devs verbindet. Onboarding war in 20 Minuten erledigt."</blockquote>
+            <figcaption class="mt-5 flex items-center gap-3">
+              <span class="grid place-items-center w-10 h-10 rounded-full bg-brand-100 text-brand-700 font-semibold">AK</span>
+              <div>
+                <div class="font-semibold text-sm">Amira Kessler</div>
+                <div class="text-xs text-brand-900/60">Design Lead, Pixelforge</div>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="py-24 bg-white border-y border-brand-100">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-2xl mx-auto text-center">
+          <span class="text-xs uppercase tracking-widest font-semibold text-brand-600">Preise</span>
+          <h2 class="mt-2 font-display font-bold text-4xl sm:text-5xl tracking-tight">Klar. Fair. Skaliert mit dir.</h2>
+          <p class="mt-4 text-brand-900/70 text-lg">Starte gratis, upgrade wenn du wächst. Keine versteckten Kosten.</p>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-3 gap-5 items-stretch">
+          <article class="rounded-2xl border border-brand-100 p-8 flex flex-col">
+            <h3 class="font-display font-semibold text-xl">Starter</h3>
+            <p class="text-sm text-brand-900/60 mt-1">Für Einzelpersonen & kleine Projekte.</p>
+            <div class="mt-6 font-display font-bold text-4xl">0 €<span class="text-base font-medium text-brand-900/60">/Monat</span></div>
+            <ul class="mt-6 space-y-3 text-sm">
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 3 Projekte</li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 50 KI-Generationen / Monat</li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> HTML/Tailwind Export</li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Community Support</li>
+            </ul>
+            <a href="#cta" class="mt-8 inline-flex items-center justify-center px-5 py-3 rounded-xl border border-brand-200 font-semibold hover:border-brand-400 transition-colors duration-200 cursor-pointer">
+              Kostenlos starten
+            </a>
+          </article>
+
+          <article class="relative rounded-2xl border-2 border-cta-500 p-8 flex flex-col bg-gradient-to-br from-brand-50 to-white shadow-glow">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-cta-500 text-white text-xs font-semibold">Beliebt</span>
+            <h3 class="font-display font-semibold text-xl">Pro</h3>
+            <p class="text-sm text-brand-900/60 mt-1">Für wachsende Produkt-Teams.</p>
+            <div class="mt-6 font-display font-bold text-4xl">29 €<span class="text-base font-medium text-brand-900/60">/Monat</span></div>
+            <ul class="mt-6 space-y-3 text-sm">
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-cta-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Unlimited Projekte</li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-cta-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 2.000 KI-Generationen / Monat</li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-cta-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> React, Vue, Svelte Export</li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-cta-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Team-Kollaboration</li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-cta-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Prioritäts-Support</li>
+            </ul>
+            <a href="#cta" class="mt-8 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-cta-500 text-white font-semibold hover:bg-cta-600 transition-colors duration-200 cursor-pointer">
+              Pro testen
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="rounded-2xl border border-brand-100 p-8 flex flex-col">
+            <h3 class="font-display font-semibold text-xl">Enterprise</h3>
+            <p class="text-sm text-brand-900/60 mt-1">Skalierte Sicherheit & Support.</p>
+            <div class="mt-6 font-display font-bold text-4xl">Custom</div>
+            <ul class="mt-6 space-y-3 text-sm">
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> SSO / SAML</li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Dedizierter CSM</li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> On-Prem-Deployment</li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 99,99% SLA</li>
+            </ul>
+            <a href="#cta" class="mt-8 inline-flex items-center justify-center px-5 py-3 rounded-xl border border-brand-200 font-semibold hover:border-brand-400 transition-colors duration-200 cursor-pointer">
+              Sales kontaktieren
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="py-24">
+      <div class="mx-auto max-w-4xl px-6">
+        <div class="relative rounded-3xl bg-gradient-to-br from-brand-600 to-brand-900 p-10 sm:p-14 text-white text-center shadow-soft overflow-hidden">
+          <div aria-hidden="true" class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-cta-500/30 blur-3xl"></div>
+          <div aria-hidden="true" class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-brand-300/30 blur-3xl"></div>
+          <div class="relative">
+            <h2 class="font-display font-bold text-4xl sm:text-5xl tracking-tight">
+              Bereit, schneller zu versenden?
+            </h2>
+            <p class="mt-4 text-brand-100/80 max-w-2xl mx-auto text-lg">
+              Starte heute kostenlos. Keine Kreditkarte. In unter 60 Sekunden im Studio.
+            </p>
+
+            <form class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Danke! Wir melden uns kurz.');">
+              <label class="sr-only" for="email">E-Mail-Adresse</label>
+              <input
+                id="email"
+                type="email"
+                required
+                placeholder="dein@team.com"
+                class="flex-1 px-4 py-3 rounded-xl bg-white/95 text-brand-900 placeholder-brand-900/40 focus:outline-none focus:ring-4 focus:ring-cta-500/40"
+              />
+              <button type="submit" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-cta-500 text-white font-semibold hover:bg-cta-600 transition-colors duration-200 cursor-pointer">
+                Starten
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-brand-100 bg-white">
+    <div class="mx-auto max-w-6xl px-6 py-12 grid md:grid-cols-4 gap-8 text-sm">
+      <div class="md:col-span-1">
+        <div class="flex items-center gap-2">
+          <span class="grid place-items-center w-8 h-8 rounded-lg bg-brand-500 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M4 20 20 4"/><path d="M14 4h6v6"/><path d="M10 20H4v-6"/></svg>
+          </span>
+          <span class="font-display font-bold tracking-tight">Stitch Studio</span>
+        </div>
+        <p class="mt-3 text-brand-900/60">Design schneller. Versende mutiger.</p>
+      </div>
+      <div>
+        <h4 class="font-display font-semibold mb-3">Produkt</h4>
+        <ul class="space-y-2 text-brand-900/70">
+          <li><a href="#features" class="hover:text-brand-600 transition-colors duration-200">Features</a></li>
+          <li><a href="#pricing" class="hover:text-brand-600 transition-colors duration-200">Preise</a></li>
+          <li><a href="#" class="hover:text-brand-600 transition-colors duration-200">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display font-semibold mb-3">Unternehmen</h4>
+        <ul class="space-y-2 text-brand-900/70">
+          <li><a href="#" class="hover:text-brand-600 transition-colors duration-200">Über uns</a></li>
+          <li><a href="#" class="hover:text-brand-600 transition-colors duration-200">Karriere</a></li>
+          <li><a href="#" class="hover:text-brand-600 transition-colors duration-200">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display font-semibold mb-3">Rechtliches</h4>
+        <ul class="space-y-2 text-brand-900/70">
+          <li><a href="#" class="hover:text-brand-600 transition-colors duration-200">Impressum</a></li>
+          <li><a href="#" class="hover:text-brand-600 transition-colors duration-200">Datenschutz</a></li>
+          <li><a href="#" class="hover:text-brand-600 transition-colors duration-200">AGB</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-brand-100">
+      <p class="mx-auto max-w-6xl px-6 py-5 text-xs text-brand-900/50">
+        © 2026 Stitch Studio. Alle Rechte vorbehalten.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
