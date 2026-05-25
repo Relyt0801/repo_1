@@ -13,6 +13,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -46,6 +47,19 @@
   </script>
 
   <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    // Set theme before first paint to avoid flash
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body class="font-sans bg-brand-50 text-brand-900 antialiased">
 
@@ -78,6 +92,14 @@
         </ul>
 
         <div class="flex items-center gap-2">
+          <button id="theme-toggle" type="button" class="grid place-items-center w-10 h-10 rounded-xl hover:bg-brand-50 transition-colors duration-200 cursor-pointer" aria-label="Farbschema umschalten">
+            <svg class="theme-icon-sun w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+            <svg class="theme-icon-moon w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
           <a href="#" class="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium rounded-xl hover:bg-brand-50 transition-colors duration-200 cursor-pointer">
             Login
           </a>
@@ -468,20 +490,27 @@
               Starte heute kostenlos. Keine Kreditkarte. In unter 60 Sekunden im Studio.
             </p>
 
-            <form class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Danke! Wir melden uns kurz.');">
+            <form id="signup-form" class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" novalidate>
               <label class="sr-only" for="email">E-Mail-Adresse</label>
               <input
                 id="email"
+                name="email"
                 type="email"
                 required
+                autocomplete="email"
                 placeholder="dein@team.com"
+                aria-describedby="form-status"
                 class="flex-1 px-4 py-3 rounded-xl bg-white/95 text-brand-900 placeholder-brand-900/40 focus:outline-none focus:ring-4 focus:ring-cta-500/40"
               />
-              <button type="submit" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-cta-500 text-white font-semibold hover:bg-cta-600 transition-colors duration-200 cursor-pointer">
-                Starten
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              <button id="signup-submit" type="submit" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-cta-500 text-white font-semibold hover:bg-cta-600 disabled:opacity-60 disabled:cursor-not-allowed transition-colors duration-200 cursor-pointer">
+                <span class="signup-label">Starten</span>
+                <svg class="signup-arrow w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <svg class="signup-spinner w-4 h-4 animate-spin hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                  <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                </svg>
               </button>
             </form>
+            <p id="form-status" role="status" aria-live="polite" class="mt-4 text-sm min-h-[1.25rem] text-brand-100/90"></p>
           </div>
         </div>
       </div>
