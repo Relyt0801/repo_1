@@ -2,43 +2,53 @@
   "mcpServers": {
     "cloudflare-docs": {
       "command": "npx",
-      "args": ["mcp-remote", "https://docs.mcp.cloudflare.com/mcp"]
+      "args": ["mcp-remote", "https://docs.mcp.cloudflare.com/mcp"],
+      "env": { "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}" }
     },
     "cloudflare-workers-bindings": {
       "command": "npx",
-      "args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/mcp"]
+      "args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/mcp"],
+      "env": { "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}" }
     },
     "cloudflare-workers-builds": {
       "command": "npx",
-      "args": ["mcp-remote", "https://builds.mcp.cloudflare.com/mcp"]
+      "args": ["mcp-remote", "https://builds.mcp.cloudflare.com/mcp"],
+      "env": { "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}" }
     },
     "cloudflare-observability": {
       "command": "npx",
-      "args": ["mcp-remote", "https://observability.mcp.cloudflare.com/mcp"]
+      "args": ["mcp-remote", "https://observability.mcp.cloudflare.com/mcp"],
+      "env": { "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}" }
     },
     "cloudflare-radar": {
       "command": "npx",
-      "args": ["mcp-remote", "https://radar.mcp.cloudflare.com/mcp"]
+      "args": ["mcp-remote", "https://radar.mcp.cloudflare.com/mcp"],
+      "env": { "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}" }
     },
     "cloudflare-browser": {
       "command": "npx",
-      "args": ["mcp-remote", "https://browser.mcp.cloudflare.com/mcp"]
+      "args": ["mcp-remote", "https://browser.mcp.cloudflare.com/mcp"],
+      "env": { "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}" }
     },
     "cloudflare-ai-gateway": {
       "command": "npx",
-      "args": ["mcp-remote", "https://ai-gateway.mcp.cloudflare.com/mcp"]
+      "args": ["mcp-remote", "https://ai-gateway.mcp.cloudflare.com/mcp"],
+      "env": { "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}" }
     },
     "cloudflare-dns-analytics": {
       "command": "npx",
-      "args": ["mcp-remote", "https://dns-analytics.mcp.cloudflare.com/mcp"]
+      "args": ["mcp-remote", "https://dns-analytics.mcp.cloudflare.com/mcp"],
+      "env": { "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}" }
     },
     "cloudflare-graphql": {
       "command": "npx",
-      "args": ["mcp-remote", "https://graphql.mcp.cloudflare.com/mcp"]
+      "args": ["mcp-remote", "https://graphql.mcp.cloudflare.com/mcp"],
+      "env": { "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}" }
     },
     "cloudflare-audit-logs": {
       "command": "npx",
-      "args": ["mcp-remote", "https://auditlogs.mcp.cloudflare.com/mcp"]
+      "args": ["mcp-remote", "https://auditlogs.mcp.cloudflare.com/mcp"],
+      "env": { "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}" }
     }
   }
 }
