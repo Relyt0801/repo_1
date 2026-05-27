@@ -1,4 +1,24 @@
 {
+  "permissions": {
+    "allow": [
+      "Agent",
+      "Bash(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Skill(*)",
+      "TaskCreate",
+      "TaskList",
+      "TaskGet",
+      "TaskUpdate",
+      "TeamCreate",
+      "TeamDelete",
+      "SendMessage"
+    ],
+    "defaultMode": "auto"
+  },
   "hooks": {
     "SessionStart": [
       {
