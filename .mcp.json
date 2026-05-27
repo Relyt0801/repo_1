@@ -49,6 +49,27 @@
       "command": "npx",
       "args": ["mcp-remote", "https://auditlogs.mcp.cloudflare.com/mcp"],
       "env": { "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}" }
+    },
+    "linear": {
+      "command": "npx",
+      "args": ["-y", "linear-mcp-server"],
+      "env": { "LINEAR_API_KEY": "${LINEAR_API_KEY}" }
+    },
+    "remotion": {
+      "command": "npx",
+      "args": ["-y", "@remotion/mcp"]
+    },
+    "sentry": {
+      "command": "npx",
+      "args": ["-y", "@sentry/mcp-server@latest"],
+      "env": {
+        "SENTRY_ACCESS_TOKEN": "${SENTRY_ACCESS_TOKEN}",
+        "EMBEDDED_AGENT_PROVIDER": "anthropic"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
     }
   }
 }
