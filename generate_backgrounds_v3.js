@@ -180,13 +180,13 @@ function scene(defs, bg, layers, glow) {
 function makeForum() {
   const defs = `
     ${linGrad('sky', '0', '0', '0', '1', [
-      [0,   '#080504', 1],
-      [38,  '#110B07', 1],
-      [65,  '#1C1208', 1],   // noticeably warmer near horizon
-      [100, '#0C0806', 1],
+      [0,   '#06090F', 1],
+      [40,  '#0A0C16', 1],
+      [65,  '#1A1008', 1],
+      [100, '#0A0602', 1],
     ])}
-    ${ambientGlow('glo', '58%', '70%', '74%', P.amber, 0.22)}
-    ${ambientGlow('gloL', '10%', '76%', '38%', P.ember, 0.08)}
+    ${ambientGlow('glo', '50%', '100%', '92%', P.amber, 0.30)}
+    ${ambientGlow('gloL', '8%', '100%', '46%', P.ember, 0.10)}
   `;
   const bg = `<rect width="${W}" height="${H}" fill="url(#sky)"/>`;
   const sc = P.stone;
@@ -326,13 +326,13 @@ function makeCatacombs() {
 function makeOstia() {
   const defs = `
     ${linGrad('sky', '0', '0', '0', '1', [
-      [0,   '#050608', 1],
-      [40,  '#080608', 1],
-      [65,  '#100C07', 1],
-      [100, '#080604', 1],
+      [0,   '#040710', 1],
+      [40,  '#06091C', 1],
+      [65,  '#0E0C07', 1],
+      [100, '#080602', 1],
     ])}
-    ${ambientGlow('glo',  '50%', '66%', '70%', P.amber, 0.21)}
-    ${ambientGlow('gloR', '82%', '72%', '36%', P.ember, 0.09)}
+    ${ambientGlow('glo',  '50%', '100%', '90%', P.amber, 0.28)}
+    ${ambientGlow('gloR', '84%', '100%', '42%', P.ember, 0.11)}
     <!-- Lighthouse beacon — small, tight (r=7%), NOT a blob -->
     <radialGradient id="beacon" cx="28.5%" cy="6%" r="7%"
                     gradientUnits="userSpaceOnUse" fx="${W*0.285}" fy="${H*0.06}">
@@ -444,9 +444,9 @@ function makeConstantineArch() {
       [70,  '#0E0A06', 1],
       [100, '#060402', 1],
     ])}
-    ${ambientGlow('glo',  '50%', '68%', '76%', P.gold,  0.22)}
-    ${ambientGlow('gloL', '12%', '70%', '36%', P.amber, 0.08)}
-    ${ambientGlow('gloR', '88%', '70%', '36%', P.amber, 0.08)}
+    ${ambientGlow('glo',  '50%', '100%', '94%', P.gold,  0.30)}
+    ${ambientGlow('gloL', '8%',  '100%', '44%', P.amber, 0.10)}
+    ${ambientGlow('gloR', '92%', '100%', '44%', P.amber, 0.10)}
     <!-- Chi-Rho: a DIFFUSE glow, very low opacity, large radius — no point source -->
     <radialGradient id="chiRho" cx="50%" cy="28%" r="28%"
                     gradientUnits="objectBoundingBox">
@@ -489,7 +489,13 @@ function makeConstantineArch() {
 function makeHagiaSophia() {
   const defs = `
     ${linGrad('bg', '0', '0', '0', '1', [[0,'#050302',1],[100,'#0A0705',1]])}
-    ${ambientGlow('glo', '50%', '20%', '60%', P.gold, 0.24)}
+    ${linGrad('ambGold', '0', '1', '0', '0', [
+      [0,   '#D9A441', 0.10],
+      [40,  '#D9A441', 0.06],
+      [70,  '#D9A441', 0.12],
+      [100, '#D9A441', 0.07],
+    ])}
+    ${ambientGlow('flrUp', '50%', '100%', '72%', P.gold, 0.18)}
     ${ambientGlow('glB', '50%', '88%', '42%', P.amber, 0.11)}
     <!-- Floor reflection -->
     <radialGradient id="fRefl" cx="50%" cy="90%" r="42%" gradientUnits="userSpaceOnUse"
@@ -553,7 +559,8 @@ function makeHagiaSophia() {
           stroke="${P.amberDim}" stroke-width="1" opacity="0.15"/>
   `;
   const glow = `
-    <rect width="${W}" height="${H}" fill="url(#glo)"/>
+    <rect width="${W}" height="${H}" fill="url(#ambGold)"/>
+    <rect width="${W}" height="${H}" fill="url(#flrUp)"/>
     <rect width="${W}" height="${H}" fill="url(#glB)"/>
   `;
   return scene(defs, bg, layers, glow);
@@ -564,21 +571,21 @@ function makeHagiaSophia() {
 function makeBasilica() {
   const defs = `
     ${linGrad('bg', '0', '0', '0', '1', [[0,'#040302',1],[100,'#080604',1]])}
-    ${ambientGlow('glo',  '50%', '10%', '56%', P.gold, 0.24)}
-    ${ambientGlow('flrA', '50%', '88%', '38%', P.amberDim, 0.11)}
+    ${ambientGlow('glo',  '50%', '100%', '90%', P.gold, 0.32)}
+    ${ambientGlow('flrA', '50%', '100%', '50%', P.amberDim, 0.14)}
     <!-- Apse glow: spread across top 30%, no hard hotspot -->
-    <radialGradient id="apse" cx="50%" cy="10%" r="35%"
+    <radialGradient id="apse" cx="50%" cy="18%" r="35%"
                     gradientUnits="objectBoundingBox">
-      <stop offset="0%"   stop-color="#FFE060" stop-opacity="0.11"/>
-      <stop offset="40%"  stop-color="${P.gold}" stop-opacity="0.05"/>
+      <stop offset="0%"   stop-color="#FFE060" stop-opacity="0.05"/>
+      <stop offset="40%"  stop-color="${P.gold}" stop-opacity="0.03"/>
       <stop offset="75%"  stop-color="${P.amber}" stop-opacity="0.01"/>
       <stop offset="100%" stop-color="${P.amber}" stop-opacity="0"/>
     </radialGradient>
     <!-- Cross halo: very large radius so the cross itself is NOT the source -->
     <radialGradient id="crossHalo" cx="50%" cy="40%" r="18%"
                     gradientUnits="objectBoundingBox">
-      <stop offset="0%"   stop-color="${P.gold}" stop-opacity="0.09"/>
-      <stop offset="50%"  stop-color="${P.gold}" stop-opacity="0.03"/>
+      <stop offset="0%"   stop-color="${P.gold}" stop-opacity="0.05"/>
+      <stop offset="50%"  stop-color="${P.gold}" stop-opacity="0.02"/>
       <stop offset="100%" stop-color="${P.gold}" stop-opacity="0"/>
     </radialGradient>
   `;
@@ -678,14 +685,10 @@ function makePantheon() {
 // ─── GENERATE ─────────────────────────────────────────────────────────────────
 const scenes = [
   { name: 'forum',            fn: makeForum },
-  { name: 'parthenon',        fn: makeParthenon },
-  { name: 'catacombs',        fn: makeCatacombs },
   { name: 'ostia',            fn: makeOstia },
-  { name: 'colosseum',        fn: makeColosseum },
   { name: 'constantine_arch', fn: makeConstantineArch },
   { name: 'hagia_sophia',     fn: makeHagiaSophia },
   { name: 'basilica',         fn: makeBasilica },
-  { name: 'pantheon',         fn: makePantheon },
 ];
 
 async function main() {

@@ -161,6 +161,16 @@ function addBg(slide, imgFile) {
   }
 }
 
+// For real photos: add a dark overlay so text stays readable
+function addBgPhoto(slide, imgFile, darknessTransparency = 60) {
+  addBg(slide, imgFile);
+  slide.addShape('rect', {
+    x: 0, y: 0, w: SW, h: SH,
+    fill: { color: '000000', transparency: darknessTransparency },
+    line: { color: '000000', width: 0, transparency: 100 },
+  });
+}
+
 function addGrid(slide) {
   slide.addImage({ data: svgUrl(gridOverlay(SW, SH, C.amber, 0.048)), x: 0, y: 0, w: SW, h: SH });
 }
@@ -218,8 +228,8 @@ function slide01(pres) {
   addBg(s, 'forum.jpg');
   addGrid(s);
 
-  // Subtle top center glow only (background already has ambient)
-  addGlow(s, 50, 35, 55, C.amber, 0.18);
+  // Uplighting from below — no visible hotspot
+  addGlow(s, 50, 100, 110, C.amber, 0.22);
 
   s.addText('DIE ANFÄNGE', {
     x: 0, y: 0.9, w: SW, h: 1.1,
@@ -275,19 +285,19 @@ function slide01(pres) {
 
 function slide02(pres) {
   const s = pres.addSlide();
-  addBg(s, 'parthenon.jpg');  // Der Parthenon = sofort: Griechenland
+  addBgPhoto(s, 'parthenon_real.jpg', 52);  // Echtes Foto: griechischer Tempel bei Nacht
   addGrid(s);
-  // Nur minimale Zusatzlicht — Background hat bereits Atmosphäre
-  addGlow(s, 50, 65, 60, C.amber, 0.12);
+  // Uplighting von unten — keine sichtbare Lichtquelle
+  addGlow(s, 50, 100, 120, C.amber, 0.18);
 
-  addPill(s, 0.3, 0.26, 1.8, 0.27, 'FOLIE I — KONTEXT');
+  addPill(s, 0.3, 0.26, 2.8, 0.27, 'I — ANTIKE WELT & GRIECHENLAND');
 
   // ── Linke Spalte: Antike Welt (Roman context compact) ─────────────────────
   const lw = SW * 0.43;
 
-  s.addText('Die Welt vor dem Christentum', {
+  s.addText('In welcher Welt entstand das Christentum?', {
     x: 0.3, y: 0.65, w: lw, h: 0.65,
-    fontFace: F.display, fontSize: 22, color: C.textPrimary, bold: true,
+    fontFace: F.display, fontSize: 20, color: C.textPrimary, bold: true,
     shadow: { type: 'outer', color: C.amber, opacity: 0.45, blur: 14, offset: 0, angle: 0 },
   });
 
@@ -413,11 +423,11 @@ function slide02(pres) {
 
 function slide03(pres) {
   const s = pres.addSlide();
-  addBg(s, 'catacombs.jpg');
+  addBgPhoto(s, 'ark_jesus.jpg', 50);  // Bundeslade: jüdische Wurzeln → christliche Botschaft
   addGrid(s);
-  addGlow(s, 50, 48, 48, C.amber, 0.20);
+  addGlow(s, 50, 100, 115, C.amber, 0.22);
 
-  addPill(s, 0.3, 0.28, 1.6, 0.27, 'FOLIE II — DIE GEBURT');
+  addPill(s, 0.3, 0.28, 2.2, 0.27, 'II — JESUS VON NAZARETH');
 
   s.addText('~30 n. Chr.', {
     x: 0.32, y: 0.7, w: SW*0.47, h: 0.52, fontFace: F.display, fontSize: 14,
@@ -484,9 +494,9 @@ function slide04(pres) {
   const s = pres.addSlide();
   addBg(s, 'ostia.jpg');
   addGrid(s);
-  addGlow(s, 50, 62, 52, C.amber, 0.16);
+  addGlow(s, 50, 100, 116, C.amber, 0.20);
 
-  addPill(s, 0.3, 0.28, 1.6, 0.27, 'FOLIE III — PAULUS');
+  addPill(s, 0.3, 0.28, 2.4, 0.27, 'III — PAULUS & DIE WELTMISSION');
 
   s.addText('Der Architekt.', {
     x: 0.32, y: 0.68, w: SW*0.45, h: 0.58,
@@ -517,9 +527,9 @@ function slide04(pres) {
   });
 
   const cx = SW * 0.5;
-  s.addText('SEINE STATIONEN', {
+  s.addText('PAULUS’ MISSIONSSTATIONEN (45–67 n. Chr.)', {
     x: cx, y: 0.28, w: SW - cx - 0.3, h: 0.35,
-    fontFace: F.ui, fontSize: 10, color: C.amber, bold: true, charSpacing: 2.5,
+    fontFace: F.ui, fontSize: 10, color: C.amber, bold: true, charSpacing: 1.5,
   });
 
   const stations = [
@@ -555,11 +565,11 @@ function slide04(pres) {
 
 function slide05(pres) {
   const s = pres.addSlide();
-  addBg(s, 'colosseum.jpg');
+  addBgPhoto(s, 'forest_persecution.jpg', 55);  // Wald im Gegenlicht: Geheimgottesdienste
   addGrid(s);
-  addGlow(s, 50, 68, 52, C.amber, 0.18);
+  addGlow(s, 50, 100, 118, C.amber, 0.20);
 
-  addPill(s, SW/2 - 1.2, 0.28, 2.4, 0.27, 'FOLIE IV — DIE VERFOLGUNG');
+  addPill(s, SW/2 - 1.8, 0.28, 3.6, 0.27, 'IV — CHRISTEN IN DER VERFOLGUNG');
 
   s.addText('"Wie tötet man eine Religion?\nAntwort: Man kann nicht."', {
     x: 0, y: 0.68, w: SW, h: 1.3,
@@ -631,9 +641,9 @@ function slide06(pres) {
   const s = pres.addSlide();
   addBg(s, 'constantine_arch.jpg');
   addGrid(s);
-  addGlow(s, 50, 35, 55, C.gold, 0.20);
+  addGlow(s, 50, 100, 118, C.gold, 0.26);
 
-  addPill(s, 0.3, 0.28, 1.8, 0.27, 'FOLIE V — KONSTANTIN');
+  addPill(s, 0.3, 0.28, 2.8, 0.27, 'V — KAISER KONSTANTIN 312–325 n. Chr.');
 
   s.addText('312 n. Chr.\nEin Kaiser\nhat einen Traum.', {
     x: 0.32, y: 0.68, w: SW*0.44, h: 1.8,
@@ -657,9 +667,9 @@ function slide06(pres) {
   });
 
   const cx = SW * 0.52;
-  s.addText('DIE DREI MEILENSTEINE', {
+  s.addText('DREI SCHLÜSSELEREIGNISSE (312–325)', {
     x: cx, y: 0.28, w: SW - cx - 0.3, h: 0.35,
-    fontFace: F.ui, fontSize: 10, color: C.amber, bold: true, charSpacing: 2.5,
+    fontFace: F.ui, fontSize: 10, color: C.amber, bold: true, charSpacing: 1.5,
   });
 
   const milestones = [
@@ -701,9 +711,9 @@ function slide07(pres) {
   const s = pres.addSlide();
   addBg(s, 'hagia_sophia.jpg');
   addGrid(s);
-  addGlow(s, 50, 18, 48, C.gold, 0.16);
+  addGlow(s, 50, 100, 120, C.gold, 0.22);
 
-  addPill(s, 0.3, 0.28, 1.8, 0.27, 'FOLIE VI — DIE WENDE');
+  addPill(s, 0.3, 0.28, 2.8, 0.27, 'VI — VOM VERFOLGTEN ZUM TÄTER');
 
   s.addText('"Plötzlich ist es umgekehrt."', {
     x: 0.32, y: 0.68, w: SW*0.45, h: 0.85,
@@ -734,9 +744,9 @@ function slide07(pres) {
   });
 
   const cx = SW * 0.52;
-  s.addText('DIE CHRONOLOGIE DER WENDE', {
+  s.addText('CHRONOLOGIE DER MACHTWENDE (313–529)', {
     x: cx, y: 0.28, w: SW*0.46, h: 0.35,
-    fontFace: F.ui, fontSize: 10, color: C.amber, bold: true, charSpacing: 2.5,
+    fontFace: F.ui, fontSize: 10, color: C.amber, bold: true, charSpacing: 1.5,
   });
 
   const events = [
@@ -776,9 +786,9 @@ function slide08(pres) {
   const s = pres.addSlide();
   addBg(s, 'basilica.jpg');
   addGrid(s);
-  addGlow(s, 50, 12, 52, C.gold, 0.18);
+  addGlow(s, 50, 100, 118, C.gold, 0.24);
 
-  addPill(s, SW/2 - 2.2, 0.25, 4.4, 0.27, 'FOLIE VII — ERBE & ABSCHLUSSFRAGE');
+  addPill(s, SW/2 - 2.6, 0.25, 5.2, 0.27, 'VII — DAS ERBE DER FRÜHEN KIRCHE');
 
   // ── Obere Leiste: 4 kompakte Erbe-Punkte ──────────────────────────────────
   addLine(s, 0.3, 0.68, SW - 0.6, C.amberDim, 0.5, 0.02);
