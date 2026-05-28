@@ -805,6 +805,14 @@ function slide07(pres) {
   });
 
   const cx = SW * 0.52;
+
+  // Dunkles Panel hinter dem gesamten Zeitstrahl — roter Dom-Hintergrund macht Text sonst unleserlich
+  s.addShape('rect', {
+    x: cx - 0.1, y: 0.20, w: SW - cx + 0.08, h: SH - 0.28,
+    fill: { color: '000000', transparency: 62 },
+    line: { color: '000000', width: 0, transparency: 100 },
+  });
+
   s.addText('CHRONOLOGIE DER MACHTWENDE (313–529)', {
     x: cx, y: 0.28, w: SW*0.46, h: 0.35,
     fontFace: F.ui, fontSize: 10, color: C.amber, bold: true, charSpacing: 1.5,
@@ -833,10 +841,12 @@ function slide07(pres) {
     s.addText(e.year + ' n. Chr.', {
       x: cx + 0.52, y: ey + 0.02, w: 1.6, h: 0.28,
       fontFace: F.display, fontSize: 10.5, color: i <= 1 ? C.gold : C.ember, bold: true,
+      shadow: { type: 'outer', color: '000000', opacity: 0.75, blur: 6, offset: 0, angle: 0 },
     });
     s.addText(e.text, {
       x: cx + 2.18, y: ey + 0.02, w: SW - cx - 2.5, h: 0.85,
       fontFace: F.ui, fontSize: 11, color: C.textSecond, lineSpacingMultiple: 1.28,
+      shadow: { type: 'outer', color: '000000', opacity: 0.75, blur: 5, offset: 0, angle: 0 },
     });
   });
 }
