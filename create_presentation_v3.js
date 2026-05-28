@@ -492,9 +492,9 @@ function slide03(pres) {
 
 function slide04(pres) {
   const s = pres.addSlide();
-  addBg(s, 'ostia.jpg');
+  addBgPhoto(s, 'desert_paulus.jpg', 55);  // Wüste bei Nacht: Paulus wandert durch die antike Welt
   addGrid(s);
-  addGlow(s, 50, 100, 116, C.amber, 0.20);
+  addGlow(s, 50, 100, 116, C.amber, 0.18);
 
   addPill(s, 0.3, 0.28, 2.4, 0.27, 'III — PAULUS & DIE WELTMISSION');
 
@@ -639,9 +639,9 @@ function slide05(pres) {
 
 function slide06(pres) {
   const s = pres.addSlide();
-  addBg(s, 'constantine_arch.jpg');
+  addBgPhoto(s, 'colosseum_real.jpg', 52);  // Kolosseum bei Nacht: Herz des Reiches, das Konstantin übernahm
   addGrid(s);
-  addGlow(s, 50, 100, 118, C.gold, 0.26);
+  addGlow(s, 50, 100, 118, C.gold, 0.22);
 
   addPill(s, 0.3, 0.28, 2.8, 0.27, 'V — KAISER KONSTANTIN 312–325 n. Chr.');
 
@@ -709,9 +709,9 @@ function slide06(pres) {
 
 function slide07(pres) {
   const s = pres.addSlide();
-  addBg(s, 'hagia_sophia.jpg');
+  addBgPhoto(s, 'cathedral_wende.jpg', 55);  // Rot-beleuchteter Dom: Kirche gewinnt Staatsmacht — die Wende
   addGrid(s);
-  addGlow(s, 50, 100, 120, C.gold, 0.22);
+  addGlow(s, 50, 100, 120, C.gold, 0.15);
 
   addPill(s, 0.3, 0.28, 2.8, 0.27, 'VI — VOM VERFOLGTEN ZUM TÄTER');
 
@@ -784,9 +784,9 @@ function slide07(pres) {
 
 function slide08(pres) {
   const s = pres.addSlide();
-  addBg(s, 'basilica.jpg');
+  addBgPhoto(s, 'great_wall_erbe.jpg', 38);  // Chinesische Mauer: das Erbe — was über Jahrhunderte entstand
   addGrid(s);
-  addGlow(s, 50, 100, 118, C.gold, 0.24);
+  addGlow(s, 50, 100, 118, C.gold, 0.15);
 
   addPill(s, SW/2 - 2.6, 0.25, 5.2, 0.27, 'VII — DAS ERBE DER FRÜHEN KIRCHE');
 
