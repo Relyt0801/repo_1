@@ -382,7 +382,7 @@ function slide02(pres) {
     },
     {
       num: 'III', title: 'DAS STÄDTENETZ',
-      text: 'Antiochia · Ephesus · Alexandria. Alexanders Handelsstädte werden Paulus’ Missionsstützpunkte.',
+      text: "Antiochia · Ephesus · Alexandria. Alexanders Handelsstädte werden Paulus' Missionsstützpunkte.",
     },
     {
       num: 'IV', title: 'DER LOGOS-BEGRIFF',
@@ -492,71 +492,125 @@ function slide03(pres) {
 
 function slide04(pres) {
   const s = pres.addSlide();
-  addBgPhoto(s, 'desert_paulus.jpg', 55);  // Wüste bei Nacht: Paulus wandert durch die antike Welt
+  addBgPhoto(s, 'desert_paulus.jpg', 50);
   addGrid(s);
   addGlow(s, 50, 100, 116, C.amber, 0.18);
 
   addPill(s, 0.3, 0.28, 2.4, 0.27, 'III — PAULUS & DIE WELTMISSION');
 
-  s.addText('Der Architekt.', {
-    x: 0.32, y: 0.68, w: SW*0.45, h: 0.58,
-    fontFace: F.display, fontSize: 36, color: C.textPrimary, bold: true, italic: true,
-    shadow: { type: 'outer', color: C.amber, opacity: 0.5, blur: 16, offset: 0, angle: 0 },
+  // ── Linke Spalte: Biografie + Stats + Wirkung ────────────────────────────
+  const lw = SW * 0.43;   // 5.83"
+
+  s.addText('Der erste Missionar.', {
+    x: 0.30, y: 0.68, w: lw, h: 0.68,
+    fontFace: F.display, fontSize: 32, color: C.textPrimary, bold: true, italic: true,
+    shadow: { type: 'outer', color: C.amber, opacity: 0.65, blur: 20, offset: 0, angle: 0 },
   });
 
-  addLine(s, 0.32, 1.35, SW*0.44);
-
-  s.addText('Saulus von Tarsus (ca. 5–67 n. Chr.) — gebildeter Jude, römischer Bürger, zunächst Christenverfolger. Nach einer Vision auf dem Weg nach Damaskus (ca. 35 n. Chr.) schreibt er 13 NT-Bücher und bereist das halbe Mittelmeer. Ohne je Jesus persönlich getroffen zu haben.', {
-    x: 0.32, y: 1.48, w: SW*0.44, h: 1.05,
-    fontFace: F.ui, fontSize: 12, color: C.textSecond, lineSpacingMultiple: 1.4,
+  s.addText('Saulus von Tarsus (ca. 5–67 n. Chr.) — gebildeter Jude, römischer Bürger, zunächst Christenverfolger. Eine Vision auf dem Weg nach Damaskus verändert ihn und mit ihm die Welt.', {
+    x: 0.30, y: 1.44, w: lw, h: 0.98,
+    fontFace: F.ui, fontSize: 12.5, color: C.textSecond, lineSpacingMultiple: 1.40,
   });
 
-  s.addText('3 Missionsreisen · 13 NT-Briefe · nie Jesus persönlich getroffen', {
-    x: 0.32, y: 2.65, w: SW*0.44, h: 0.32,
-    fontFace: F.display, fontSize: 12, color: C.gold, italic: true, align: 'center',
+  addLine(s, 0.30, 2.50, lw);
+
+  // 3 Key Stats — kein Template-Gefühl: große Zahlen, klares Layout
+  const stats = [
+    { val: '13', sub: 'NT-Bücher' },
+    { val: '3', sub: 'Missionsreisen' },
+    { val: '~30 J.', sub: 'aktiv als Missionar' },
+  ];
+  const sw3 = (lw - 0.12) / 3;
+  stats.forEach((st, i) => {
+    const sx = 0.30 + i * (sw3 + 0.06);
+    addCard(s, sx, 2.65, sw3, 1.12, { alpha: 18, borderAlpha: 65 });
+    s.addText(st.val, {
+      x: sx, y: 2.72, w: sw3, h: 0.56,
+      align: 'center', fontFace: F.display, fontSize: 28, color: C.goldLight, bold: true,
+      shadow: { type: 'outer', color: C.amber, opacity: 0.5, blur: 10, offset: 0, angle: 0 },
+    });
+    s.addText(st.sub, {
+      x: sx, y: 3.28, w: sw3, h: 0.40,
+      align: 'center', fontFace: F.ui, fontSize: 10, color: C.textDim, charSpacing: 0.5,
+    });
   });
 
-  addCard(s, 0.32, 3.05, SW*0.44, 1.28, { alpha: 10, borderAlpha: 60 });
-  s.addText('WARUM PAULUS ENTSCHEIDEND WAR', {
-    x: 0.45, y: 3.12, w: SW*0.4, h: 0.26,
+  addLine(s, 0.30, 3.90, lw, C.amberDim, 0.6);
+
+  // Vor / Nach Paulus — der eigentliche Inhalt
+  addCard(s, 0.30, 4.04, lw, 2.8, { alpha: 18, borderAlpha: 62 });
+  s.addText('WAS PAULUS VERÄNDERTE', {
+    x: 0.44, y: 4.12, w: lw - 0.28, h: 0.26,
     fontFace: F.ui, fontSize: 9.5, color: C.amber, bold: true, charSpacing: 1.5,
   });
-  s.addText('Vor Paulus: Christentum = jüdische Sekte in Judäa.\nNach Paulus: Weltweite Bewegung mit Gemeinden von Jerusalem bis Rom.\nAreopag-Rede in Athen: Er zitiert griechische Dichter, um Griechen zu erreichen — Inkulturation als Methode.', {
-    x: 0.45, y: 3.42, w: SW*0.41, h: 0.84,
-    fontFace: F.ui, fontSize: 11.5, color: C.textSecond, lineSpacingMultiple: 1.35,
+  addLine(s, 0.44, 4.42, lw - 0.28, C.amberDim, 0.6, 0.02);
+
+  const changes = [
+    { before: 'Jüdische Sekte in Judäa', after: 'Weltweite Bewegung' },
+    { before: 'Nur für Beschnittene', after: 'Offen für alle Völker' },
+    { before: 'Aramäisch & Hebräisch', after: 'Griechisch als Missionssprache' },
+  ];
+  changes.forEach((ch, i) => {
+    const cy2 = 4.56 + i * 0.78;
+    s.addText('→', { x: 0.44, y: cy2, w: 0.3, h: 0.30, fontFace: F.display, fontSize: 13, color: C.amber });
+    s.addText(ch.before, {
+      x: 0.76, y: cy2, w: lw * 0.42, h: 0.30,
+      fontFace: F.ui, fontSize: 11.5, color: C.textDim, italic: true,
+    });
+    s.addText(ch.after, {
+      x: 0.76 + lw * 0.44, y: cy2, w: lw * 0.44, h: 0.30,
+      fontFace: F.ui, fontSize: 11.5, color: C.textSecond, bold: true,
+    });
   });
 
-  const cx = SW * 0.5;
-  s.addText('PAULUS’ MISSIONSSTATIONEN (45–67 n. Chr.)', {
-    x: cx, y: 0.28, w: SW - cx - 0.3, h: 0.35,
+  s.addText('"Ich bin allen alles geworden, damit ich auf jeden Fall einige rette." — 1 Kor 9,22', {
+    x: 0.44, y: 5.94, w: lw - 0.28, h: 0.72,
+    fontFace: F.display, fontSize: 11.5, color: C.gold, italic: true, lineSpacingMultiple: 1.38,
+  });
+
+  // ── Rechte Spalte: 5 Stationen als kompakte Karten ────────────────────────
+  const rx = SW * 0.495;
+  const rw = SW - rx - 0.28;
+
+  s.addText('FÜNF STATIONEN SEINER REISE', {
+    x: rx, y: 0.28, w: rw, h: 0.35,
     fontFace: F.ui, fontSize: 10, color: C.amber, bold: true, charSpacing: 1.5,
   });
 
   const stations = [
-    { city: 'ANTIOCHIA', note: 'Hier werden Anhänger Jesu erstmals "Christen" genannt (~45 n. Chr.).' },
-    { city: 'ATHEN', note: 'Areopag-Rede: zitiert Epimenides & Aratos. Trifft Philosophen auf ihrem eigenen Terrain.' },
-    { city: 'KORINTH', note: '18 Monate. Wichtigste Handelsstadt. Brief an die Korinther folgt Jahre später.' },
-    { city: 'EPHESUS', note: '3 Jahre Mission gegen den Artemis-Kult. Beinahe-Aufstand der Silberschmiede.' },
-    { city: 'ROM', note: 'Stirbt dort ~67 n. Chr. unter Kaiser Nero. Sein Grab: unter dem Petersdom.' },
+    { city: 'ANTIOCHIA', year: '~45 n. Chr.', note: 'Hier werden Jesu-Anhänger erstmals „Christen" genannt. Ausgangspunkt aller Missionsreisen.' },
+    { city: 'ATHEN', year: '~50 n. Chr.', note: 'Areopag-Rede: Paulus zitiert griechische Dichter, nicht jüdische Schriften. Inkulturation als Methode.' },
+    { city: 'KORINTH', year: '~51 n. Chr.', note: '18 Monate in der größten Handelsstadt. Hier entsteht der 1. Korintherbrief.' },
+    { city: 'EPHESUS', year: '~54 n. Chr.', note: '3 Jahre Mission. Aufstand der Silberschmiede — der Artemis-Kult verliert Kundschaft.' },
+    { city: 'ROM', year: '~67 n. Chr.', note: 'Martyrium unter Nero. Sein Grab liegt heute unter dem Hochaltar des Petersdoms.' },
   ];
 
+  const cardH = 1.14;
+  const cardGap = 0.08;
   stations.forEach((st, i) => {
-    const sy = 0.72 + i * 1.24;
-    const cSvg = timelineCircle(0.18, C.ember, C.emberBright);
-    s.addImage({ data: svgUrl(cSvg), x: cx + 0.08, y: sy + 0.06, w: 0.36, h: 0.36 });
-    if (i < stations.length - 1) {
-      s.addShape('line', {
-        x: cx + 0.26, y: sy + 0.42, w: 0, h: 0.84,
-        line: { color: C.amberDim, width: 1, dashType: 'dash' },
-      });
-    }
+    const sy = 0.72 + i * (cardH + cardGap);
+    addCard(s, rx, sy, rw, cardH, { alpha: 20, borderAlpha: 60 });
+
+    // Stadt & Jahr links
     s.addText(st.city, {
-      x: cx + 0.55, y: sy + 0.04, w: 2.5, h: 0.30,
-      fontFace: F.display, fontSize: 12.5, color: C.textPrimary, bold: true, charSpacing: 1.5,
+      x: rx + 0.14, y: sy + 0.10, w: 1.72, h: 0.36,
+      fontFace: F.display, fontSize: 13.5, color: C.textPrimary, bold: true, charSpacing: 1,
     });
+    s.addText(st.year, {
+      x: rx + 0.14, y: sy + 0.50, w: 1.72, h: 0.26,
+      fontFace: F.ui, fontSize: 10, color: C.gold,
+    });
+
+    // Vertikaler Trenner
+    s.addShape('line', {
+      x: rx + 2.04, y: sy + 0.12, w: 0, h: cardH - 0.24,
+      line: { color: C.amberDim, width: 0.8, transparency: 50 },
+    });
+
+    // Beschreibung rechts
     s.addText(st.note, {
-      x: cx + 0.55, y: sy + 0.34, w: SW - cx - 0.85, h: 0.78,
-      fontFace: F.ui, fontSize: 11.5, color: C.textSecond, lineSpacingMultiple: 1.32,
+      x: rx + 2.20, y: sy + 0.10, w: rw - 2.38, h: cardH - 0.20,
+      fontFace: F.ui, fontSize: 11.5, color: C.textSecond, lineSpacingMultiple: 1.34,
     });
   });
 }
@@ -565,17 +619,23 @@ function slide04(pres) {
 
 function slide05(pres) {
   const s = pres.addSlide();
-  addBgPhoto(s, 'forest_persecution.jpg', 55);  // Wald im Gegenlicht: Geheimgottesdienste
+  addBgPhoto(s, 'forest_persecution.jpg', 48);  // Wald im Gegenlicht: Geheimgottesdienste
   addGrid(s);
   addGlow(s, 50, 100, 118, C.amber, 0.20);
 
   addPill(s, SW/2 - 1.8, 0.28, 3.6, 0.27, 'IV — CHRISTEN IN DER VERFOLGUNG');
 
+  // Dunkles Panel hinter dem freistehenden Zitat für Lesbarkeit
+  s.addShape('rect', {
+    x: SW*0.06, y: 0.58, w: SW*0.88, h: 1.7,
+    fill: { color: '000000', transparency: 70 },
+    line: { color: '000000', width: 0, transparency: 100 },
+  });
   s.addText('"Wie tötet man eine Religion?\nAntwort: Man kann nicht."', {
     x: 0, y: 0.68, w: SW, h: 1.3,
     align: 'center', fontFace: F.display, fontSize: 28,
     color: C.textPrimary, italic: true, bold: false,
-    shadow: { type: 'outer', color: C.amber, opacity: 0.45, blur: 18, offset: 0, angle: 0 },
+    shadow: { type: 'outer', color: C.amber, opacity: 0.65, blur: 22, offset: 0, angle: 0 },
   });
 
   addLine(s, SW*0.12, 2.1, SW*0.76);
@@ -583,6 +643,7 @@ function slide05(pres) {
   s.addText('Die Christen weigerten sich, den Kaiser zu verehren. Das war politische Subversion.\nDrei Mal versuchte Rom, sie zu vernichten. Drei Mal scheiterte es.', {
     x: SW*0.08, y: 2.25, w: SW*0.84, h: 0.72,
     fontFace: F.ui, fontSize: 13.5, color: C.textSecond, align: 'center', lineSpacingMultiple: 1.4,
+    shadow: { type: 'outer', color: '000000', opacity: 0.7, blur: 8, offset: 0, angle: 0 },
   });
 
   const events = [
@@ -605,7 +666,7 @@ function slide05(pres) {
     const cx = 0.3 + i * (cw + 0.15);
     const cy = 3.1;
     const ch = 3.74;
-    addCard(s, cx, cy, cw, ch, { alpha: 10, glow: true, borderAlpha: 55 });
+    addCard(s, cx, cy, cw, ch, { alpha: 18, glow: true, borderAlpha: 50 });
     s.addShape('rect', { x: cx, y: cy, w: cw, h: 0.055, fill: { color: C.ember, transparency: 20 } });
 
     s.addText(e.year, {
@@ -784,9 +845,9 @@ function slide07(pres) {
 
 function slide08(pres) {
   const s = pres.addSlide();
-  addBgPhoto(s, 'great_wall_erbe.jpg', 38);  // Chinesische Mauer: das Erbe — was über Jahrhunderte entstand
+  addBgPhoto(s, 'great_wall_erbe.jpg', 34);  // Chinesische Mauer: das Erbe — was über Jahrhunderte entstand
   addGrid(s);
-  addGlow(s, 50, 100, 118, C.gold, 0.15);
+  addGlow(s, 50, 100, 118, C.gold, 0.10);
 
   addPill(s, SW/2 - 2.6, 0.25, 5.2, 0.27, 'VII — DAS ERBE DER FRÜHEN KIRCHE');
 
@@ -804,7 +865,7 @@ function slide08(pres) {
   impacts.forEach((imp, i) => {
     const ix = 0.3 + i * (iw + 0.067);
     const iy = 0.78;
-    addCard(s, ix, iy, iw, 1.32, { alpha: 12, borderAlpha: 70 });
+    addCard(s, ix, iy, iw, 1.32, { alpha: 22, borderAlpha: 60 });
     s.addShape('rect', { x: ix, y: iy, w: iw, h: 0.04, fill: { color: C.gold, transparency: 30 } });
 
     const rc = romanCircle(imp.icon, 0.32, C.amberDim, C.goldLight);
@@ -831,11 +892,17 @@ function slide08(pres) {
     color: C.amberDim, charSpacing: 6, bold: true,
   });
 
+  // Dunkle Fläche hinter der großen Frage — Chinesische Mauer hat hellen Himmel dort
+  s.addShape('rect', {
+    x: SW*0.04, y: 2.62, w: SW*0.92, h: 4.5,
+    fill: { color: '000000', transparency: 65 },
+    line: { color: '000000', width: 0, transparency: 100 },
+  });
   s.addText('Wofür würdet\nihr heute sterben?', {
     x: SW*0.06, y: 2.72, w: SW*0.88, h: 2.2,
     align: 'center', fontFace: F.display, fontSize: 50,
     color: C.textPrimary, bold: true, italic: true,
-    shadow: { type: 'outer', color: C.amber, opacity: 0.65, blur: 26, offset: 0, angle: 0 },
+    shadow: { type: 'outer', color: C.amber, opacity: 0.75, blur: 28, offset: 0, angle: 0 },
   });
 
   const sepSvg = separator(SW * 0.48, C.gold);
@@ -845,16 +912,19 @@ function slide08(pres) {
     x: SW*0.08, y: 5.26, w: SW*0.84, h: 0.48,
     align: 'center', fontFace: F.display, fontSize: 15.5,
     color: C.textSecond, italic: true,
+    shadow: { type: 'outer', color: '000000', opacity: 0.65, blur: 8, offset: 0, angle: 0 },
   });
   s.addText('Welche Idee, welcher Mensch, welcher Glaube wäre es euch wert?', {
     x: SW*0.1, y: 5.78, w: SW*0.8, h: 0.42,
     align: 'center', fontFace: F.display, fontSize: 13.5,
     color: C.gold, italic: true,
+    shadow: { type: 'outer', color: '000000', opacity: 0.65, blur: 6, offset: 0, angle: 0 },
   });
   s.addText('Und wenn nichts — was sagt das über unsere Zeit?', {
     x: SW*0.15, y: 6.24, w: SW*0.7, h: 0.36,
     align: 'center', fontFace: F.display, fontSize: 12,
     color: C.amberDim, italic: true,
+    shadow: { type: 'outer', color: '000000', opacity: 0.6, blur: 5, offset: 0, angle: 0 },
   });
 
   s.addText('SCHULPRÄSENTATION • OBERSTUFE • 2026', {
