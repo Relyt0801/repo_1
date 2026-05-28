@@ -299,9 +299,9 @@ function addTimelineEvent(slide, x, y, year, text, isLast = false) {
     bold: true, charSpacing: 1,
   });
 
-  // Content
+  // Content (capped at SW*0.38 to maintain 0.5in right safe zone)
   slide.addText(text, {
-    x: x + dotR * 2 + 0.15, y: dotY + 0.28, w: SW * 0.42, h: 0.45,
+    x: x + dotR * 2 + 0.15, y: dotY + 0.28, w: SW * 0.38, h: 0.45,
     fontFace: F.ui, fontSize: 11.5, color: C.textSecond,
   });
 }
@@ -639,7 +639,7 @@ function slide05(pres) {
       fontFace: F.display, fontSize: 13, color: C.textPrimary, bold: true, charSpacing: 1.5,
     });
     s.addText(st.note, {
-      x: cx + 0.55, y: sy + 0.35, w: SW - cx - 0.65, h: 0.75,
+      x: cx + 0.55, y: sy + 0.35, w: SW - cx - 0.95, h: 0.75,
       fontFace: F.ui, fontSize: 11.5, color: C.textSecond, lineSpacingMultiple: 1.35,
     });
   });
@@ -798,10 +798,16 @@ function slide07(pres) {
     });
   });
 
-  addLine(s, 0.3, SH - 0.44, SW - 0.6, C.amberDim, 0.5, 0.02);
+  addLine(s, 0.3, SH - 0.56, SW - 0.6, C.amberDim, 0.5, 0.02);
   s.addText('Die Verfolgten sitzen jetzt am Tisch des Kaisers.', {
-    x: 0, y: SH - 0.4, w: SW, h: 0.32,
+    x: 0, y: SH - 0.52, w: SW * 0.65, h: 0.3,
     fontFace: F.display, fontSize: 13, color: C.gold, italic: true, align: 'center',
+  });
+  // Forward reference — bridges the 325→380 gap the intro promised
+  s.addText('→ Folie VII: 55 Jahre später wird das Christentum Staatsreligion.', {
+    x: SW * 0.35, y: SH - 0.52, w: SW * 0.62, h: 0.3,
+    fontFace: F.ui, fontSize: 11, color: C.amber, align: 'right',
+    italic: true,
   });
 }
 
@@ -867,7 +873,7 @@ function slide08(pres) {
       fontFace: F.display, fontSize: 10.5, color: i <= 1 ? C.gold : C.ember, bold: true,
     });
     s.addText(e.text, {
-      x: cx + 2.08, y: ey + 0.02, w: SW - cx - 2.2, h: 0.85,
+      x: cx + 2.08, y: ey + 0.02, w: SW - cx - 2.5, h: 0.85,
       fontFace: F.ui, fontSize: 11, color: C.textSecond, lineSpacingMultiple: 1.3,
     });
   });
@@ -995,6 +1001,45 @@ async function main() {
   slide08(pres); console.log('  [8/10] Die Wende');
   slide09(pres); console.log('  [9/10] Erbe');
   slide10(pres); console.log('  [10/10] Abschlussfrage');
+
+  // ── SPEAKER NOTES ──────────────────────────────────────────────────────────
+  const slides = pres.slides;
+  const notes = [
+    // Slide 1
+    `EINSTIEG (2–3 Min.)\n• Einstiegsfrage: "Was wisst ihr über das frühe Christentum?" — Antworten sammeln.\n• Kontext: Im Jahr 30 n. Chr. war Christentum eine winzige jüdische Randgruppe. 350 Jahre später: Staatsreligion des Römischen Reiches.\n• Die drei Daten auf der Folie (30 / 313 / 380) sind die drei Akte der Geschichte — durch die Präsentation führen wir euch Schritt für Schritt durch.`,
+
+    // Slide 2
+    `KONTEXT — DIE ANTIKE WELT (3–4 Min.)\n• Wichtig: Polytheismus war NORMAL. Es waren die Christen, die als seltsam galten.\n• Frage an Klasse: "Kennt ihr moderne Beispiele von Staatsreligion?" (Iran, Saudi-Arabien, historisch England).\n• Betonung: Persönlicher Glaube als private Gewissenssache — diese Idee ist 2.000 Jahre alt und stammt aus dem Christentum.`,
+
+    // Slide 3
+    `GRIECHENLAND — GRUNDLAGE (3 Min.)\n• Die Pointe: Das Christentum konnte sich nur deshalb so schnell ausbreiten, weil Alexander 300 Jahre früher die Infrastruktur geschaffen hatte.\n• Konkret: Paulus brauchte keinen Dolmetscher. Er sprach Griechisch, alle verstanden ihn.\n• Interessant: Das NT ist auf Griechisch — nicht auf Aramäisch (Jesu Muttersprache) oder Hebräisch (Sprache der Bibel).`,
+
+    // Slide 4
+    `DIE GEBURT — DIE ERSTE GEMEINDE (4 Min.)\n• Historischer Kern: Die Kreuzigung Jesu ist historisch gut belegt (Tacitus, Josephus). Die Auferstehung ist Glaubensfrage — als Historiker können wir nur sagen: etwas hat die Jünger so überzeugt, dass sie dafür ihr Leben riskierten.\n• Diskussionsfrage: "Was würde euch so überzeugen, dass ihr alles aufgebt?"\n• Die frühen Christen lebten in Gütergemeinschaft — radikales soziales Experiment.`,
+
+    // Slide 5
+    `PAULUS — DER ARCHITEKT (3–4 Min.)\n• Pointe: Paulus hat nie Jesus persönlich getroffen — trotzdem schrieb er fast die Hälfte des NT.\n• Sein Brief an die Römer (ca. 57 n. Chr.) ist das älteste systematische Glaubensdokument des Christentums.\n• Areopag-Rede in Athen (Apg 17): Musterstück der Inkulturation — er zitiert griechische Dichter, um Griechen zu erreichen.\n• Historiographisch: Ohne Paulus wäre Christentum möglicherweise eine jüdische Sekte geblieben.`,
+
+    // Slide 6
+    `VERFOLGUNG — WARUM SCHEITERTE ROM? (3–4 Min.)\n• Tertullian-Zitat ist ein Schlüsselsatz: Märtyrer wirkten als lebende Werbung. Wer stirbt, ohne zu widerrufen, muss etwas Echtes glauben.\n• Nero-Verfolgung: Relativ begrenzt, lokal auf Rom. Aber Petrus und Paulus starben dort.\n• Diokletian-Verfolgung: Die härteste — und nur 10 Jahre vor Konstantins Wende. Fast zu spät.\n• Frage: "Warum kann man eine Idee nicht mit Gewalt töten?"\n• Historiographische Debatte: Wie viele Christen starben wirklich? Zahlen sind umstritten.`,
+
+    // Slide 7
+    `KONSTANTIN — WENDEPUNKT (4 Min.)\n• WICHTIG: Ob Konstantin wirklich Christ wurde oder ob es politisches Kalkül war, ist bis heute umstritten.\n• Argument für echt: Er bewahrte den Glauben bis zum Lebensende, ließ sich kurz vor dem Tod taufen.\n• Argument für politisch: Das Christentum war die am schnellsten wachsende Religion — gute Wette.\n• Konzil von Nicäa (325): Hier entstand das Nizänische Glaubensbekenntnis — bis heute in katholischen/evangelischen Gottesdiensten.\n• BRÜCKE zu Folie 8: "Konstantin öffnet die Tür — aber was passiert, wenn die Kirche durch diese Tür geht?"`,
+
+    // Slide 8
+    `DIE WENDE — OPFER WERDEN TÄTER (4 Min.)\n• Das ist die unbequeme Wahrheit der Kirchengeschichte — und die wichtigste Lektion.\n• Hypatia (415): Erste bekannte weibliche Mathematikerin und Philosophin der Antike, von christlichem Mob getötet. Symbol für den Konflikt.\n• Olympische Spiele: Verboten wegen Zeus-Kult — erst 1896 wiederbelebt.\n• Diskussionsfrage: "Liegt es in der Natur jeder Macht, andere zu unterdrücken — oder hätte die Kirche es anders machen können?"\n• Verbindung zu heute: Religionsfreiheit als Grundrecht ist direkte Reaktion auf diese Geschichte.`,
+
+    // Slide 9
+    `ERBE — WAS BLEIBT (3 Min.)\n• Interaktiv: Für jeden Punkt fragen, ob den Schülern das bewusst war.\n• Sonntag: Kaiser Konstantin 321 n. Chr. — Vorher war Sonntag ein normaler Arbeitstag.\n• Krankenhäuser: Das erste Krankenhaus der Geschichte gründete ein Bischof (Basilius von Cäsarea, ~370 n. Chr.).\n• Universitäten: Viele der ältesten Universitäten (Bologna, Oxford, Paris) aus Klosterschulen entstanden.\n• Ethik: "Menschenwürde gilt für alle" — in der antiken Welt galt das explizit nicht für Sklaven.`,
+
+    // Slide 10
+    `ABSCHLUSSDISKUSSION (5–10 Min.)\n• Stille lassen. Die Frage wirken lassen — mindestens 5 Sekunden Pause.\n• Mögliche Einstiegsfragen: "Gibt es heute Menschen, die für ihre Überzeugungen sterben?" (Whistleblower, Aktivisten, Soldaten)\n• "Was unterscheidet 'Wofür man stirbt' von 'Wofür man lebt'?"\n• Rückkopplung: "Was hätten die frühen Christen über uns 2026 gedacht?"\n• Bewertungshinweis: Keine richtigen/falschen Antworten. Ziel ist reflektiertes Denken über Werte und Überzeugungen.`,
+  ];
+
+  notes.forEach((note, i) => {
+    if (slides[i]) slides[i].addNotes(note);
+  });
+  console.log('  [OK] Speaker notes added to all 10 slides');
 
   const out = path.join(__dirname, 'Anfaenge_Kirche_Antike_v2.pptx');
   await pres.writeFile({ fileName: out });
